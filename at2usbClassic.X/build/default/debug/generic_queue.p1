@@ -1,0 +1,289 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"11 ./generic_queue.h
+[; ;./generic_queue.h: 11: typedef struct {
+[s S1 `uc -> 90 `i `ui 1 `uc 1 `uc 1 `uc 1 ]
+[n S1 . buffer element_size front rear size ]
+"27 /opt/microchip/xc8/v2.45/pic/include/c99/string.h
+[; ;/opt/microchip/xc8/v2.45/pic/include/c99/string.h: 27: void *memcpy (void *restrict, const void *restrict, size_t);
+[v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
+"30
+[; ;/opt/microchip/xc8/v2.45/pic/include/c99/string.h: 30: int memcmp (const void *, const void *, size_t);
+[v _memcmp `(i ~T0 @X0 0 ef3`*Cv`*Cv`ui ]
+"4 generic_queue.c
+[; ;generic_queue.c: 4: void GenericQueue_Init(GenericQueue *q, size_t element_size) {
+[v _GenericQueue_Init `(v ~T0 @X0 1 ef2`*S1`ui ]
+{
+[e :U _GenericQueue_Init ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[v _element_size `ui ~T0 @X0 1 r2 ]
+[f ]
+"5
+[; ;generic_queue.c: 5:     q->element_size = element_size;
+[e = . *U _q 1 _element_size ]
+"6
+[; ;generic_queue.c: 6:     q->front = 0;
+[e = . *U _q 2 -> -> 0 `i `uc ]
+"7
+[; ;generic_queue.c: 7:     q->rear = 0;
+[e = . *U _q 3 -> -> 0 `i `uc ]
+"8
+[; ;generic_queue.c: 8:     q->size = 0;
+[e = . *U _q 4 -> -> 0 `i `uc ]
+"9
+[; ;generic_queue.c: 9: }
+[e :UE 3 ]
+}
+"11
+[; ;generic_queue.c: 11: int GenericQueue_IsEmpty(GenericQueue *q) {
+[v _GenericQueue_IsEmpty `(i ~T0 @X0 1 ef1`*S1 ]
+{
+[e :U _GenericQueue_IsEmpty ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[f ]
+"12
+[; ;generic_queue.c: 12:     return (q->size == 0);
+[e ) -> == -> . *U _q 4 `i -> 0 `i `i ]
+[e $UE 4  ]
+"13
+[; ;generic_queue.c: 13: }
+[e :UE 4 ]
+}
+"15
+[; ;generic_queue.c: 15: int GenericQueue_IsFull(GenericQueue *q) {
+[v _GenericQueue_IsFull `(i ~T0 @X0 1 ef1`*S1 ]
+{
+[e :U _GenericQueue_IsFull ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[f ]
+"16
+[; ;generic_queue.c: 16:     return (q->size == 15);
+[e ) -> == -> . *U _q 4 `i -> 15 `i `i ]
+[e $UE 5  ]
+"17
+[; ;generic_queue.c: 17: }
+[e :UE 5 ]
+}
+"19
+[; ;generic_queue.c: 19: void GenericQueue_Enqueue(GenericQueue *q, const void *item) {
+[v _GenericQueue_Enqueue `(v ~T0 @X0 1 ef2`*S1`*Cv ]
+{
+[e :U _GenericQueue_Enqueue ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[v _item `*Cv ~T0 @X0 1 r2 ]
+[f ]
+"20
+[; ;generic_queue.c: 20:     if (!GenericQueue_IsFull(q)) {
+[e $ ! ! != ( _GenericQueue_IsFull (1 _q -> 0 `i 7  ]
+{
+"21
+[; ;generic_queue.c: 21:         memcpy(&q->buffer[q->rear * q->element_size], item, q->element_size);
+[e ( _memcpy (3 , , -> &U *U + &U . *U _q 0 * -> * -> . *U _q 3 `ui . *U _q 1 `ux -> -> # *U &U . *U _q 0 `ui `ux `*v _item . *U _q 1 ]
+"22
+[; ;generic_queue.c: 22:         q->rear = (q->rear + 1) % 15;
+[e = . *U _q 3 -> % + -> . *U _q 3 `i -> 1 `i -> 15 `i `uc ]
+"23
+[; ;generic_queue.c: 23:         q->size++;
+[e ++ . *U _q 4 -> -> 1 `i `uc ]
+"24
+[; ;generic_queue.c: 24:     }
+}
+[e :U 7 ]
+"25
+[; ;generic_queue.c: 25: }
+[e :UE 6 ]
+}
+"27
+[; ;generic_queue.c: 27: void GenericQueue_Dequeue(GenericQueue *q, void *item) {
+[v _GenericQueue_Dequeue `(v ~T0 @X0 1 ef2`*S1`*v ]
+{
+[e :U _GenericQueue_Dequeue ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[v _item `*v ~T0 @X0 1 r2 ]
+[f ]
+"28
+[; ;generic_queue.c: 28:     if (!GenericQueue_IsEmpty(q)) {
+[e $ ! ! != ( _GenericQueue_IsEmpty (1 _q -> 0 `i 9  ]
+{
+"29
+[; ;generic_queue.c: 29:         memcpy(item, &q->buffer[q->front * q->element_size], q->element_size);
+[e ( _memcpy (3 , , _item -> &U *U + &U . *U _q 0 * -> * -> . *U _q 2 `ui . *U _q 1 `ux -> -> # *U &U . *U _q 0 `ui `ux `*Cv . *U _q 1 ]
+"30
+[; ;generic_queue.c: 30:         q->front = (q->front + 1) % 15;
+[e = . *U _q 2 -> % + -> . *U _q 2 `i -> 1 `i -> 15 `i `uc ]
+"31
+[; ;generic_queue.c: 31:         q->size--;
+[e -- . *U _q 4 -> -> 1 `i `uc ]
+"32
+[; ;generic_queue.c: 32:     }
+}
+[e :U 9 ]
+"33
+[; ;generic_queue.c: 33: }
+[e :UE 8 ]
+}
+"35
+[; ;generic_queue.c: 35: void GenericQueue_Remove(GenericQueue *q, const void *item) {
+[v _GenericQueue_Remove `(v ~T0 @X0 1 ef2`*S1`*Cv ]
+{
+[e :U _GenericQueue_Remove ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[v _item `*Cv ~T0 @X0 1 r2 ]
+[f ]
+"36
+[; ;generic_queue.c: 36:     if (!GenericQueue_IsEmpty(q)) {
+[e $ ! ! != ( _GenericQueue_IsEmpty (1 _q -> 0 `i 11  ]
+{
+"37
+[; ;generic_queue.c: 37:         for (uint8_t i = q->front; i != q->rear; i = (i + 1) % 15) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i . *U _q 2 ]
+[e $U 15  ]
+[e :U 12 ]
+{
+"38
+[; ;generic_queue.c: 38:             if (memcmp(&q->buffer[i * q->element_size], item, q->element_size) == 0) {
+[e $ ! == ( _memcmp (3 , , -> &U *U + &U . *U _q 0 * -> * -> _i `ui . *U _q 1 `ux -> -> # *U &U . *U _q 0 `ui `ux `*Cv _item . *U _q 1 -> 0 `i 16  ]
+{
+"39
+[; ;generic_queue.c: 39:                 for (uint8_t j = i; j != q->rear; j = (j + 1) % 15) {
+{
+[v _j `uc ~T0 @X0 1 a ]
+[e = _j _i ]
+[e $U 20  ]
+[e :U 17 ]
+{
+"40
+[; ;generic_queue.c: 40:                     memcpy(&q->buffer[j * q->element_size],
+[e ( _memcpy (3 , , -> &U *U + &U . *U _q 0 * -> * -> _j `ui . *U _q 1 `ux -> -> # *U &U . *U _q 0 `ui `ux `*v -> &U *U + &U . *U _q 0 * -> * -> % + -> _j `i -> 1 `i -> 15 `i `ui . *U _q 1 `ux -> -> # *U &U . *U _q 0 `ui `ux `*Cv . *U _q 1 ]
+"43
+[; ;generic_queue.c: 43:                 }
+}
+[e = _j -> % + -> _j `i -> 1 `i -> 15 `i `uc ]
+[e :U 20 ]
+[e $ != -> _j `i -> . *U _q 3 `i 17  ]
+[e :U 18 ]
+}
+"44
+[; ;generic_queue.c: 44:                 q->rear = (q->rear - 1 + 15) % 15;
+[e = . *U _q 3 -> % + - -> . *U _q 3 `i -> 1 `i -> 15 `i -> 15 `i `uc ]
+"45
+[; ;generic_queue.c: 45:                 q->size--;
+[e -- . *U _q 4 -> -> 1 `i `uc ]
+"46
+[; ;generic_queue.c: 46:                 break;
+[e $U 13  ]
+"47
+[; ;generic_queue.c: 47:             }
+}
+[e :U 16 ]
+"48
+[; ;generic_queue.c: 48:         }
+}
+[e = _i -> % + -> _i `i -> 1 `i -> 15 `i `uc ]
+[e :U 15 ]
+[e $ != -> _i `i -> . *U _q 3 `i 12  ]
+[e :U 13 ]
+}
+"49
+[; ;generic_queue.c: 49:     }
+}
+[e :U 11 ]
+"50
+[; ;generic_queue.c: 50: }
+[e :UE 10 ]
+}
+"52
+[; ;generic_queue.c: 52: _Bool GenericQueue_Contains(GenericQueue *q, const void *item) {
+[v _GenericQueue_Contains `(a ~T0 @X0 1 ef2`*S1`*Cv ]
+{
+[e :U _GenericQueue_Contains ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[v _item `*Cv ~T0 @X0 1 r2 ]
+[f ]
+"53
+[; ;generic_queue.c: 53:     if (!GenericQueue_IsEmpty(q)) {
+[e $ ! ! != ( _GenericQueue_IsEmpty (1 _q -> 0 `i 22  ]
+{
+"54
+[; ;generic_queue.c: 54:         for (uint8_t i = q->front; i != q->rear; i = (i + 1) % 15) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i . *U _q 2 ]
+[e $U 26  ]
+[e :U 23 ]
+{
+"55
+[; ;generic_queue.c: 55:             if (memcmp(&q->buffer[i * q->element_size], item, q->element_size) == 0) {
+[e $ ! == ( _memcmp (3 , , -> &U *U + &U . *U _q 0 * -> * -> _i `ui . *U _q 1 `ux -> -> # *U &U . *U _q 0 `ui `ux `*Cv _item . *U _q 1 -> 0 `i 27  ]
+{
+"56
+[; ;generic_queue.c: 56:                 return 1;
+[e ) -> -> 1 `i `a ]
+[e $UE 21  ]
+"57
+[; ;generic_queue.c: 57:             }
+}
+[e :U 27 ]
+"58
+[; ;generic_queue.c: 58:         }
+}
+[e = _i -> % + -> _i `i -> 1 `i -> 15 `i `uc ]
+[e :U 26 ]
+[e $ != -> _i `i -> . *U _q 3 `i 23  ]
+[e :U 24 ]
+}
+"59
+[; ;generic_queue.c: 59:     }
+}
+[e :U 22 ]
+"60
+[; ;generic_queue.c: 60:     return 0;
+[e ) -> -> 0 `i `a ]
+[e $UE 21  ]
+"61
+[; ;generic_queue.c: 61: }
+[e :UE 21 ]
+}
+"63
+[; ;generic_queue.c: 63: void GenericQueue_CopyToArray(GenericQueue *q, void *array) {
+[v _GenericQueue_CopyToArray `(v ~T0 @X0 1 ef2`*S1`*v ]
+{
+[e :U _GenericQueue_CopyToArray ]
+[v _q `*S1 ~T0 @X0 1 r1 ]
+[v _array `*v ~T0 @X0 1 r2 ]
+[f ]
+"64
+[; ;generic_queue.c: 64:     uint8_t index = q->front;
+[v _index `uc ~T0 @X0 1 a ]
+[e = _index . *U _q 2 ]
+"65
+[; ;generic_queue.c: 65:     uint8_t count = 0;
+[v _count `uc ~T0 @X0 1 a ]
+[e = _count -> -> 0 `i `uc ]
+"66
+[; ;generic_queue.c: 66:     while (count < q->size) {
+[e $U 29  ]
+[e :U 30 ]
+{
+"67
+[; ;generic_queue.c: 67:         memcpy((char*)array + (count * q->element_size),
+[e ( _memcpy (3 , , -> + -> _array `*uc * -> * -> _count `ui . *U _q 1 `ux -> -> # *U -> _array `*uc `ui `ux `*v -> &U *U + &U . *U _q 0 * -> * -> _index `ui . *U _q 1 `ux -> -> # *U &U . *U _q 0 `ui `ux `*Cv . *U _q 1 ]
+"70
+[; ;generic_queue.c: 70:         index = (index + 1) % 15;
+[e = _index -> % + -> _index `i -> 1 `i -> 15 `i `uc ]
+"71
+[; ;generic_queue.c: 71:         count++;
+[e ++ _count -> -> 1 `i `uc ]
+"72
+[; ;generic_queue.c: 72:     }
+}
+[e :U 29 ]
+"66
+[; ;generic_queue.c: 66:     while (count < q->size) {
+[e $ < -> _count `i -> . *U _q 4 `i 30  ]
+[e :U 31 ]
+"73
+[; ;generic_queue.c: 73: }
+[e :UE 28 ]
+}
