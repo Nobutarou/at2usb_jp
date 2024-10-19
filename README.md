@@ -42,6 +42,15 @@ https://bsakatu.net/doc/usb-hid-to-scancode/
 
 ビルド時に never called の warning の出た function を削除
 
+# 回路図 for Justy JKB-89S
+
+内部では XH 5P コネクタとなっている。こっちの方が入手しやすいので、内部から直接つなぐこと
+にする。実際には上から C, D, G, V, F と記号が振ってあり Clock, Data, Gnd, Vcc であることは、
+テスターで確認済み。G と F も導通しているので、ケーブルを剥いて調べてはいないが F がシール
+ド線と思われる。
+
+[回路図](./kicad/at2usb_jp/at2usb_jp.pdf)
+
 # ToDo
 
 - [ ] UART 完全削除。今は動かないだけで関数などは残っている
