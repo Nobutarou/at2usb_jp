@@ -15,6 +15,11 @@ https://github.com/BojanSof/at2usb
 
 # 変更したファイル
 
+- プロジェクト定義に関するなにか
+
+MPLAB X IDE でターゲットマイコンを PIC16F1455 に変更したので、何かが変わっているはずだけど、
+分からない。
+
 - mcc_generated_files/pin_manager.c: 
 
 RB ポート操作を消す。RB ポートが無いため。UART 関連なので使わないから問題ないはず
