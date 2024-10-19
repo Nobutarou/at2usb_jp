@@ -268,7 +268,7 @@
     "net_colors": null,
     "netclass_assignments": {
       "5V": "5V",
-      "GND": "GND",
+      "GND": "Shield",
       "KBD_CLK": "Clock",
       "KBD_DATA": "Data"
     },
