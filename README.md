@@ -41,3 +41,8 @@ https://bsakatu.net/doc/usb-hid-to-scancode/
 - usb/usb_device.c
 
 ビルド時に never called の warning の出た function を削除
+
+# ToDo
+
+- [ ] UART 完全削除。今は動かないだけで関数などは残っている
+- [ ] 使わない #define を削除
