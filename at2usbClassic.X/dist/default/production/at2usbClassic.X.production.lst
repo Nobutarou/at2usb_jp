@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Sun Oct 20 21:29:59 2024
+                                                                                               Mon Oct 21 00:26:09 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9 
      1                           	processor	16F1455
@@ -2576,13 +2576,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   2562     1832  3415               	retlw	21
   2563     1833  3400               	retlw	0
   2564     1834  3425               	retlw	37
-  2565     1835  3465               	retlw	101
+  2565     1835  348B               	retlw	139
   2566     1836  3405               	retlw	5
   2567     1837  3407               	retlw	7
   2568     1838  3419               	retlw	25
   2569     1839  3400               	retlw	0
   2570     183A  3429               	retlw	41
-  2571     183B  3465               	retlw	101
+  2571     183B  348B               	retlw	139
   2572     183C  3481               	retlw	129
   2573     183D  3400               	retlw	0
   2574     183E  34C0               	retlw	192
@@ -6734,7 +6734,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6556     02F2                     __ptext28:	
   6557 ;; *************** function _APP_KeyboardTasks *****************
   6558 ;; Defined at:
-  6559 ;;		line 334 in file "app_device_keyboard.c"
+  6559 ;;		line 336 in file "app_device_keyboard.c"
   6560 ;; Parameters:    Size  Location     Type
   6561 ;;  scanCode        1    wreg     PTR const struct PS2Scan
   6562 ;;		 -> main@scanCode(3), NULL(0), 
@@ -6785,30 +6785,30 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6602                           ;APP_KeyboardTasks@scanCode stored from wreg
   6603     02F2  00D3               	movwf	APP_KeyboardTasks@scanCode^(0+128)
   6604                           
-  6605                           ;app_device_keyboard.c: 335:     signed int TimeDeltaMilliseconds;;app_device_keyboard.c
-      +                          : 336:     unsigned char i;;app_device_keyboard.c: 337:     _Bool needToSendNewReportPac
-      +                          ket;;app_device_keyboard.c: 340:     APP_KeyboardUpdateState(scanCode);
+  6605                           ;app_device_keyboard.c: 337:     signed int TimeDeltaMilliseconds;;app_device_keyboard.c
+      +                          : 338:     unsigned char i;;app_device_keyboard.c: 339:     _Bool needToSendNewReportPac
+      +                          ket;;app_device_keyboard.c: 342:     APP_KeyboardUpdateState(scanCode);
   6606     02F3  0853               	movf	APP_KeyboardTasks@scanCode^(0+128),w
   6607     02F4  3180  2087  3182   	fcall	_APP_KeyboardUpdateState
   6608                           
-  6609                           ;app_device_keyboard.c: 345:     if (USBDeviceState < CONFIGURED_STATE) {
+  6609                           ;app_device_keyboard.c: 347:     if (USBDeviceState < CONFIGURED_STATE) {
   6610     02F7  3020               	movlw	32
   6611     02F8  0020               	movlb	0	; select bank0
   6612     02F9  026C               	subwf	_USBDeviceState,w
   6613     02FA  1C03               	btfss	3,0
   6614     02FB  0008               	return
   6615                           
-  6616                           ;app_device_keyboard.c: 353:     if (UCONbits.SUSPND == 1) {
+  6616                           ;app_device_keyboard.c: 355:     if (UCONbits.SUSPND == 1) {
   6617                           
-  6618                           ;app_device_keyboard.c: 347:     }
+  6618                           ;app_device_keyboard.c: 349:     }
   6619     02FC  003D               	movlb	29	; select bank29
   6620     02FD  188E               	btfsc	14,1	;volatile
   6621     02FE  0008               	return
   6622     02FF                     l868:	
-  6623                           ;app_device_keyboard.c: 369:     }
+  6623                           ;app_device_keyboard.c: 371:     }
   6624                           
   6625                           
-  6626                           ;app_device_keyboard.c: 367:     while (LocalSOFCount != SOFCounter) {
+  6626                           ;app_device_keyboard.c: 369:     while (LocalSOFCount != SOFCounter) {
   6627     02FF  0022               	movlb	2	; select bank2
   6628     0300  083B               	movf	(_SOFCounter+1)^(0+256),w	;volatile
   6629     0301  0637               	xorwf	(_LocalSOFCount+1)^(0+256),w
@@ -6820,7 +6820,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6635     0306  1903               	btfsc	3,2
   6636     0307  2B0D               	goto	l6275
   6637                           
-  6638                           ;app_device_keyboard.c: 368:         LocalSOFCount = SOFCounter;
+  6638                           ;app_device_keyboard.c: 370:         LocalSOFCount = SOFCounter;
   6639     0308  083B               	movf	(_SOFCounter+1)^(0+256),w	;volatile
   6640     0309  00B7               	movwf	(_LocalSOFCount+1)^(0+256)
   6641     030A  083A               	movf	_SOFCounter^(0+256),w	;volatile
@@ -6828,7 +6828,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6643     030C  2AFF               	goto	l868
   6644     030D                     l6275:
   6645                           
-  6646                           ;app_device_keyboard.c: 373:     TimeDeltaMilliseconds = LocalSOFCount - OldSOFCount;
+  6646                           ;app_device_keyboard.c: 375:     TimeDeltaMilliseconds = LocalSOFCount - OldSOFCount;
   6647     030D  0834               	movf	_OldSOFCount^(0+256),w
   6648     030E  0236               	subwf	_LocalSOFCount^(0+256),w
   6649     030F  0021               	movlb	1	; select bank1
@@ -6839,11 +6839,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6654     0314  0021               	movlb	1	; select bank1
   6655     0315  00D6               	movwf	(APP_KeyboardTasks@TimeDeltaMilliseconds+1)^(0+128)
   6656                           
-  6657                           ;app_device_keyboard.c: 375:     if (TimeDeltaMilliseconds < 0) {
+  6657                           ;app_device_keyboard.c: 377:     if (TimeDeltaMilliseconds < 0) {
   6658     0316  1FD6               	btfss	(APP_KeyboardTasks@TimeDeltaMilliseconds+1)^(0+128),7
   6659     0317  2B28               	goto	l6281
   6660                           
-  6661                           ;app_device_keyboard.c: 376:         TimeDeltaMilliseconds = (32767 - OldSOFCount) + Loc
+  6661                           ;app_device_keyboard.c: 378:         TimeDeltaMilliseconds = (32767 - OldSOFCount) + Loc
       +                          alSOFCount;
   6662     0318  0022               	movlb	2	; select bank2
   6663     0319  0834               	movf	_OldSOFCount^(0+256),w
@@ -6863,7 +6863,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6677     0327  00D6               	movwf	(APP_KeyboardTasks@TimeDeltaMilliseconds+1)^(0+128)
   6678     0328                     l6281:
   6679                           
-  6680                           ;app_device_keyboard.c: 383:     if (TimeDeltaMilliseconds > 5000) {
+  6680                           ;app_device_keyboard.c: 385:     if (TimeDeltaMilliseconds > 5000) {
   6681     0328  0856               	movf	(APP_KeyboardTasks@TimeDeltaMilliseconds+1)^(0+128),w
   6682     0329  3A80               	xorlw	128
   6683     032A  00D1               	movwf	??_APP_KeyboardTasks^(0+128)
@@ -6877,7 +6877,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6691     0331  1C03               	skipc
   6692     0332  2B3A               	goto	l6285
   6693                           
-  6694                           ;app_device_keyboard.c: 384:         OldSOFCount = LocalSOFCount - 5000;
+  6694                           ;app_device_keyboard.c: 386:         OldSOFCount = LocalSOFCount - 5000;
   6695     0333  0022               	movlb	2	; select bank2
   6696     0334  0836               	movf	_LocalSOFCount^(0+256),w
   6697     0335  3E78               	addlw	120
@@ -6887,7 +6887,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6701     0339  00B5               	movwf	(_OldSOFCount+1)^(0+256)
   6702     033A                     l6285:
   6703                           
-  6704                           ;app_device_keyboard.c: 390:     if (((keyboard.lastINTransmission != 0x0000) && ((*(vol
+  6704                           ;app_device_keyboard.c: 392:     if (((keyboard.lastINTransmission != 0x0000) && ((*(vol
       +                          atile uint8_t*)keyboard.lastINTransmission & 0x80) != 0x00)) == 0) {
   6705     033A  302C               	movlw	44
   6706     033B  0086               	movwf	6
@@ -6914,7 +6914,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6727     0350  2BCA               	goto	l6323
   6728     0351                     l6289:
   6729                           
-  6730                           ;app_device_keyboard.c: 392:         memset(&inputReport, 0, sizeof (inputReport));
+  6730                           ;app_device_keyboard.c: 394:         memset(&inputReport, 0, sizeof (inputReport));
   6731     0351  3000               	movlw	0
   6732     0352  0021               	movlb	1	; select bank1
   6733     0353  00A8               	movwf	memset@c^(0+128)
@@ -6926,7 +6926,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6739     0359  30A0               	movlw	160
   6740     035A  3190  209F  3182   	fcall	_memset
   6741                           
-  6742                           ;app_device_keyboard.c: 394:         GenericQueue_CopyToArray(&keyboard.keys, inputRepor
+  6742                           ;app_device_keyboard.c: 396:         GenericQueue_CopyToArray(&keyboard.keys, inputRepor
       +                          t.keys);
   6743     035D  3030               	movlw	48
   6744     035E  00C0               	movwf	GenericQueue_CopyToArray@q^(0+128)
@@ -6936,7 +6936,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6748     0362  00C2               	movwf	GenericQueue_CopyToArray@array^(0+128)
   6749     0363  3196  2668  3182   	fcall	_GenericQueue_CopyToArray
   6750                           
-  6751                           ;app_device_keyboard.c: 395:         inputReport.modifiers.value = keyboard.modifiers.va
+  6751                           ;app_device_keyboard.c: 397:         inputReport.modifiers.value = keyboard.modifiers.va
       +                          lue;
   6752     0366  308F               	movlw	143
   6753     0367  0086               	movwf	6
@@ -6945,14 +6945,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6756     036A  0801               	movf	1,w
   6757     036B  00A0               	movwf	32
   6758                           
-  6759                           ;app_device_keyboard.c: 398:         needToSendNewReportPacket = 0;
+  6759                           ;app_device_keyboard.c: 400:         needToSendNewReportPacket = 0;
   6760     036C  01D4               	clrf	APP_KeyboardTasks@needToSendNewReportPacket^(0+128)
   6761                           
-  6762                           ;app_device_keyboard.c: 399:         for (i = 0; i < sizeof (inputReport); i++) {
+  6762                           ;app_device_keyboard.c: 401:         for (i = 0; i < sizeof (inputReport); i++) {
   6763     036D  01D7               	clrf	APP_KeyboardTasks@i^(0+128)
   6764     036E                     l6301:
   6765                           
-  6766                           ;app_device_keyboard.c: 400:             if (*((uint8_t*) & oldInputReport + i) != *((ui
+  6766                           ;app_device_keyboard.c: 402:             if (*((uint8_t*) & oldInputReport + i) != *((ui
       +                          nt8_t*) & inputReport + i)) {
   6767     036E  0857               	movf	APP_KeyboardTasks@i^(0+128),w
   6768     036F  3EA0               	addlw	160
@@ -6968,15 +6968,15 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6778     0379  1903               	skipnz
   6779     037A  2B7E               	goto	l6305
   6780                           
-  6781                           ;app_device_keyboard.c: 401:                 needToSendNewReportPacket = 1;
+  6781                           ;app_device_keyboard.c: 403:                 needToSendNewReportPacket = 1;
   6782     037B  01D4               	clrf	APP_KeyboardTasks@needToSendNewReportPacket^(0+128)
   6783     037C  0AD4               	incf	APP_KeyboardTasks@needToSendNewReportPacket^(0+128),f
   6784                           
-  6785                           ;app_device_keyboard.c: 402:                 break;
+  6785                           ;app_device_keyboard.c: 404:                 break;
   6786     037D  2B86               	goto	l6309
   6787     037E                     l6305:
   6788                           
-  6789                           ;app_device_keyboard.c: 404:         }
+  6789                           ;app_device_keyboard.c: 406:         }
   6790     037E  3001               	movlw	1
   6791     037F  00D1               	movwf	??_APP_KeyboardTasks^(0+128)
   6792     0380  0851               	movf	??_APP_KeyboardTasks^(0+128),w
@@ -6987,14 +6987,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6797     0385  2B6E               	goto	l6301
   6798     0386                     l6309:
   6799                           
-  6800                           ;app_device_keyboard.c: 409:         if (keyboardIdleRate != 0) {
+  6800                           ;app_device_keyboard.c: 411:         if (keyboardIdleRate != 0) {
   6801     0386  0022               	movlb	2	; select bank2
   6802     0387  0838               	movf	_keyboardIdleRate^(0+256),w
   6803     0388  0439               	iorwf	(_keyboardIdleRate+1)^(0+256),w
   6804     0389  1903               	btfsc	3,2
   6805     038A  2B9F               	goto	l6315
   6806                           
-  6807                           ;app_device_keyboard.c: 411:             if (TimeDeltaMilliseconds >= keyboardIdleRate) 
+  6807                           ;app_device_keyboard.c: 413:             if (TimeDeltaMilliseconds >= keyboardIdleRate) 
       +                          {
   6808     038B  0021               	movlb	1	; select bank1
   6809     038C  0856               	movf	(APP_KeyboardTasks@TimeDeltaMilliseconds+1)^(0+128),w
@@ -7015,19 +7015,19 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6824     039A  1C03               	skipc
   6825     039B  2B9F               	goto	l6315
   6826                           
-  6827                           ;app_device_keyboard.c: 412:                 needToSendNewReportPacket = 1;
+  6827                           ;app_device_keyboard.c: 414:                 needToSendNewReportPacket = 1;
   6828     039C  0021               	movlb	1	; select bank1
   6829     039D  01D4               	clrf	APP_KeyboardTasks@needToSendNewReportPacket^(0+128)
   6830     039E  0AD4               	incf	APP_KeyboardTasks@needToSendNewReportPacket^(0+128),f
   6831     039F                     l6315:
   6832                           
-  6833                           ;app_device_keyboard.c: 418:         if (needToSendNewReportPacket == 1) {
+  6833                           ;app_device_keyboard.c: 420:         if (needToSendNewReportPacket == 1) {
   6834     039F  0021               	movlb	1	; select bank1
   6835     03A0  0354               	decf	APP_KeyboardTasks@needToSendNewReportPacket^(0+128),w
   6836     03A1  1D03               	btfss	3,2
   6837     03A2  2BCA               	goto	l6323
   6838                           
-  6839                           ;app_device_keyboard.c: 422:             oldInputReport = inputReport;
+  6839                           ;app_device_keyboard.c: 424:             oldInputReport = inputReport;
   6840     03A3  30A0               	movlw	160
   6841     03A4  0086               	movwf	6
   6842     03A5  3000               	movlw	0
@@ -7044,7 +7044,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6853     03AF  0BD1               	decfsz	??_APP_KeyboardTasks^(0+128),f
   6854     03B0  2BAD               	goto	u6220
   6855                           
-  6856                           ;app_device_keyboard.c: 425:             keyboard.lastINTransmission = USBTransferOnePac
+  6856                           ;app_device_keyboard.c: 427:             keyboard.lastINTransmission = USBTransferOnePac
       +                          ket(1,1,(uint8_t*) & inputReport,sizeof (inputReport));
   6857     03B1  01A8               	clrf	USBTransferOnePacket@dir^(0+128)
   6858     03B2  0AA8               	incf	USBTransferOnePacket@dir^(0+128),f
@@ -7065,7 +7065,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6873     03C3  0829               	movf	(?_USBTransferOnePacket+1)^(0+128),w
   6874     03C4  3FC1               	movwi [1]fsr1
   6875                           
-  6876                           ;app_device_keyboard.c: 426:             OldSOFCount = LocalSOFCount;
+  6876                           ;app_device_keyboard.c: 428:             OldSOFCount = LocalSOFCount;
   6877     03C5  0022               	movlb	2	; select bank2
   6878     03C6  0837               	movf	(_LocalSOFCount+1)^(0+256),w
   6879     03C7  00B5               	movwf	(_OldSOFCount+1)^(0+256)
@@ -7073,7 +7073,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6881     03C9  00B4               	movwf	_OldSOFCount^(0+256)
   6882     03CA                     l6323:
   6883                           
-  6884                           ;app_device_keyboard.c: 438:     if (((keyboard.lastOUTTransmission != 0x0000) && ((*(vo
+  6884                           ;app_device_keyboard.c: 440:     if (((keyboard.lastOUTTransmission != 0x0000) && ((*(vo
       +                          latile uint8_t*)keyboard.lastOUTTransmission & 0x80) != 0x00)) == 0) {
   6885     03CA  302C               	movlw	44
   6886     03CB  0086               	movwf	6
@@ -7102,10 +7102,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   6909     03E2  0008               	return
   6910     03E3                     l6327:
   6911                           
-  6912                           ;app_device_keyboard.c: 439:         APP_KeyboardProcessOutputReport();
+  6912                           ;app_device_keyboard.c: 441:         APP_KeyboardProcessOutputReport();
   6913     03E3  319E  26FD  3182   	fcall	_APP_KeyboardProcessOutputReport
   6914                           
-  6915                           ;app_device_keyboard.c: 440:         keyboard.lastOUTTransmission = USBTransferOnePacket
+  6915                           ;app_device_keyboard.c: 442:         keyboard.lastOUTTransmission = USBTransferOnePacket
       +                          (1,0,(uint8_t*) & outputReport,sizeof (outputReport));
   6916     03E6  0021               	movlb	1	; select bank1
   6917     03E7  01A8               	clrf	USBTransferOnePacket@dir^(0+128)
@@ -7658,7 +7658,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7438     0087                     __ptext33:	
   7439 ;; *************** function _APP_KeyboardUpdateState *****************
   7440 ;; Defined at:
-  7441 ;;		line 446 in file "app_device_keyboard.c"
+  7441 ;;		line 448 in file "app_device_keyboard.c"
   7442 ;; Parameters:    Size  Location     Type
   7443 ;;  scanCode        1    wreg     PTR const struct PS2Scan
   7444 ;;		 -> main@scanCode(3), NULL(0), 
@@ -7712,12 +7712,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7487                           ;APP_KeyboardUpdateState@scanCode stored from wreg
   7488     0087  00D0               	movwf	APP_KeyboardUpdateState@scanCode^(0+128)
   7489                           
-  7490                           ;app_device_keyboard.c: 447:     if (scanCode != ((void*)0)) {
+  7490                           ;app_device_keyboard.c: 449:     if (scanCode != ((void*)0)) {
   7491     0088  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7492     0089  1903               	btfsc	3,2
   7493     008A  0008               	return
   7494                           
-  7495                           ;app_device_keyboard.c: 448:         if (scanCode->isExtend) {
+  7495                           ;app_device_keyboard.c: 450:         if (scanCode->isExtend) {
   7496     008B  0A50               	incf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7497     008C  0086               	movwf	6
   7498     008D  0187               	clrf	7
@@ -7725,7 +7725,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7500     008F  1903               	btfsc	3,2
   7501     0090  28F6               	goto	l6197
   7502                           
-  7503                           ;app_device_keyboard.c: 449:             if (scanCode->isBreak) {
+  7503                           ;app_device_keyboard.c: 451:             if (scanCode->isBreak) {
   7504     0091  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7505     0092  3E02               	addlw	2
   7506     0093  0086               	movwf	6
@@ -7734,7 +7734,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7509     0096  1903               	btfsc	3,2
   7510     0097  28C0               	goto	l6185
   7511                           
-  7512                           ;app_device_keyboard.c: 450:                 if (scanCode->value == 0X14) {
+  7512                           ;app_device_keyboard.c: 452:                 if (scanCode->value == 0X14) {
   7513     0098  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7514     0099  0086               	movwf	6
   7515     009A  0187               	clrf	7
@@ -7743,7 +7743,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7518     009D  1D03               	btfss	3,2
   7519     009E  28A5               	goto	l6179
   7520                           
-  7521                           ;app_device_keyboard.c: 451:                     keyboard.modifiers.bits.rightControl = 
+  7521                           ;app_device_keyboard.c: 453:                     keyboard.modifiers.bits.rightControl = 
       +                          0;
   7522     009F  308F               	movlw	143
   7523     00A0  0086               	movwf	6
@@ -7751,7 +7751,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7525     00A2  0087               	movwf	7
   7526     00A3  1201               	bcf	1,4
   7527                           
-  7528                           ;app_device_keyboard.c: 452:                 } else if (scanCode->value == 0x11) {
+  7528                           ;app_device_keyboard.c: 454:                 } else if (scanCode->value == 0x11) {
   7529     00A4  0008               	return
   7530     00A5                     l6179:
   7531     00A5  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -7762,24 +7762,24 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7536     00AA  1D03               	btfss	3,2
   7537     00AB  28B2               	goto	l6183
   7538                           
-  7539                           ;app_device_keyboard.c: 453:                     keyboard.modifiers.bits.rightAlt = 0;
+  7539                           ;app_device_keyboard.c: 455:                     keyboard.modifiers.bits.rightAlt = 0;
   7540     00AC  308F               	movlw	143
   7541     00AD  0086               	movwf	6
   7542     00AE  3023               	movlw	35
   7543     00AF  0087               	movwf	7
   7544     00B0  1301               	bcf	1,6
   7545                           
-  7546                           ;app_device_keyboard.c: 454:                 } else {
+  7546                           ;app_device_keyboard.c: 456:                 } else {
   7547     00B1  0008               	return
   7548     00B2                     l6183:
   7549                           
-  7550                           ;app_device_keyboard.c: 455:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
+  7550                           ;app_device_keyboard.c: 457:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
       +                          SBHID(scanCode);
   7551     00B2  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7552     00B3  3192  220F  3180   	fcall	_PS2USB_ScanCodeToUSBHID
   7553     00B6  00CC               	movwf	APP_KeyboardUpdateState@usbHidCode^(0+128)
   7554                           
-  7555                           ;app_device_keyboard.c: 456:                     GenericQueue_Remove(&keyboard.keys, &us
+  7555                           ;app_device_keyboard.c: 458:                     GenericQueue_Remove(&keyboard.keys, &us
       +                          bHidCode);
   7556     00B7  3030               	movlw	48
   7557     00B8  00C0               	movwf	GenericQueue_Remove@q^(0+128)
@@ -7791,7 +7791,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7563     00BF  0008               	return
   7564     00C0                     l6185:
   7565                           
-  7566                           ;app_device_keyboard.c: 459:                 if (scanCode->value == 0X14) {
+  7566                           ;app_device_keyboard.c: 461:                 if (scanCode->value == 0X14) {
   7567     00C0  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7568     00C1  0086               	movwf	6
   7569     00C2  0187               	clrf	7
@@ -7800,7 +7800,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7572     00C5  1D03               	btfss	3,2
   7573     00C6  28CD               	goto	l6189
   7574                           
-  7575                           ;app_device_keyboard.c: 460:                     keyboard.modifiers.bits.rightControl = 
+  7575                           ;app_device_keyboard.c: 462:                     keyboard.modifiers.bits.rightControl = 
       +                          1;
   7576     00C7  308F               	movlw	143
   7577     00C8  0086               	movwf	6
@@ -7808,7 +7808,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7579     00CA  0087               	movwf	7
   7580     00CB  1601               	bsf	1,4
   7581                           
-  7582                           ;app_device_keyboard.c: 461:                 } else if (scanCode->value == 0x11) {
+  7582                           ;app_device_keyboard.c: 463:                 } else if (scanCode->value == 0x11) {
   7583     00CC  0008               	return
   7584     00CD                     l6189:
   7585     00CD  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -7819,24 +7819,24 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7590     00D2  1D03               	btfss	3,2
   7591     00D3  28DA               	goto	l6193
   7592                           
-  7593                           ;app_device_keyboard.c: 462:                     keyboard.modifiers.bits.rightAlt = 1;
+  7593                           ;app_device_keyboard.c: 464:                     keyboard.modifiers.bits.rightAlt = 1;
   7594     00D4  308F               	movlw	143
   7595     00D5  0086               	movwf	6
   7596     00D6  3023               	movlw	35
   7597     00D7  0087               	movwf	7
   7598     00D8  1701               	bsf	1,6
   7599                           
-  7600                           ;app_device_keyboard.c: 463:                 } else {
+  7600                           ;app_device_keyboard.c: 465:                 } else {
   7601     00D9  0008               	return
   7602     00DA                     l6193:
   7603                           
-  7604                           ;app_device_keyboard.c: 464:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
+  7604                           ;app_device_keyboard.c: 466:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
       +                          SBHID(scanCode);
   7605     00DA  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7606     00DB  3192  220F  3180   	fcall	_PS2USB_ScanCodeToUSBHID
   7607     00DE  00CE               	movwf	APP_KeyboardUpdateState@usbHidCode_2855^(0+128)
   7608                           
-  7609                           ;app_device_keyboard.c: 465:                     if (!GenericQueue_Contains(&keyboard.ke
+  7609                           ;app_device_keyboard.c: 467:                     if (!GenericQueue_Contains(&keyboard.ke
       +                          ys, &usbHidCode)) {
   7610     00DF  3030               	movlw	48
   7611     00E0  00BE               	movwf	GenericQueue_Contains@q^(0+128)
@@ -7849,7 +7849,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7618     00E9  1D03               	skipz
   7619     00EA  0008               	return
   7620                           
-  7621                           ;app_device_keyboard.c: 466:                         GenericQueue_Enqueue(&keyboard.keys
+  7621                           ;app_device_keyboard.c: 468:                         GenericQueue_Enqueue(&keyboard.keys
       +                          , &usbHidCode);
   7622     00EB  3030               	movlw	48
   7623     00EC  00C0               	movwf	GenericQueue_Enqueue@q^(0+128)
@@ -7861,13 +7861,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7629     00F2  00C3               	movwf	(GenericQueue_Enqueue@item+1)^(0+128)
   7630     00F3  3188  2052         	fcall	_GenericQueue_Enqueue
   7631                           
-  7632                           ;app_device_keyboard.c: 470:         } else {
+  7632                           ;app_device_keyboard.c: 472:         } else {
   7633                           
-  7634                           ;app_device_keyboard.c: 469:             }
+  7634                           ;app_device_keyboard.c: 471:             }
   7635     00F5  0008               	return
   7636     00F6                     l6197:
   7637                           
-  7638                           ;app_device_keyboard.c: 471:             if (scanCode->isBreak) {
+  7638                           ;app_device_keyboard.c: 473:             if (scanCode->isBreak) {
   7639     00F6  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7640     00F7  3E02               	addlw	2
   7641     00F8  0086               	movwf	6
@@ -7876,7 +7876,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7644     00FB  1903               	btfsc	3,2
   7645     00FC  293F               	goto	l6217
   7646                           
-  7647                           ;app_device_keyboard.c: 473:                 if (scanCode->value == 0x12) {
+  7647                           ;app_device_keyboard.c: 475:                 if (scanCode->value == 0x12) {
   7648     00FD  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7649     00FE  0086               	movwf	6
   7650     00FF  0187               	clrf	7
@@ -7885,14 +7885,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7653     0102  1D03               	btfss	3,2
   7654     0103  290A               	goto	l6203
   7655                           
-  7656                           ;app_device_keyboard.c: 474:                     keyboard.modifiers.bits.leftShift = 0;
+  7656                           ;app_device_keyboard.c: 476:                     keyboard.modifiers.bits.leftShift = 0;
   7657     0104  308F               	movlw	143
   7658     0105  0086               	movwf	6
   7659     0106  3023               	movlw	35
   7660     0107  0087               	movwf	7
   7661     0108  1081               	bcf	1,1
   7662                           
-  7663                           ;app_device_keyboard.c: 475:                 } else if (scanCode->value == 0X14) {
+  7663                           ;app_device_keyboard.c: 477:                 } else if (scanCode->value == 0X14) {
   7664     0109  0008               	return
   7665     010A                     l6203:
   7666     010A  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -7903,7 +7903,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7671     010F  1D03               	btfss	3,2
   7672     0110  2917               	goto	l6207
   7673                           
-  7674                           ;app_device_keyboard.c: 476:                     keyboard.modifiers.bits.leftControl = 0
+  7674                           ;app_device_keyboard.c: 478:                     keyboard.modifiers.bits.leftControl = 0
       +                          ;
   7675     0111  308F               	movlw	143
   7676     0112  0086               	movwf	6
@@ -7911,7 +7911,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7678     0114  0087               	movwf	7
   7679     0115  1001               	bcf	1,0
   7680                           
-  7681                           ;app_device_keyboard.c: 477:                 } else if (scanCode->value == 0x11) {
+  7681                           ;app_device_keyboard.c: 479:                 } else if (scanCode->value == 0x11) {
   7682     0116  0008               	return
   7683     0117                     l6207:
   7684     0117  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -7922,14 +7922,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7689     011C  1D03               	btfss	3,2
   7690     011D  2924               	goto	l6211
   7691                           
-  7692                           ;app_device_keyboard.c: 478:                     keyboard.modifiers.bits.leftAlt = 0;
+  7692                           ;app_device_keyboard.c: 480:                     keyboard.modifiers.bits.leftAlt = 0;
   7693     011E  308F               	movlw	143
   7694     011F  0086               	movwf	6
   7695     0120  3023               	movlw	35
   7696     0121  0087               	movwf	7
   7697     0122  1101               	bcf	1,2
   7698                           
-  7699                           ;app_device_keyboard.c: 479:                 } else if (scanCode->value == 0x59) {
+  7699                           ;app_device_keyboard.c: 481:                 } else if (scanCode->value == 0x59) {
   7700     0123  0008               	return
   7701     0124                     l6211:
   7702     0124  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -7940,24 +7940,24 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7707     0129  1D03               	btfss	3,2
   7708     012A  2931               	goto	l6215
   7709                           
-  7710                           ;app_device_keyboard.c: 480:                     keyboard.modifiers.bits.rightShift = 0;
+  7710                           ;app_device_keyboard.c: 482:                     keyboard.modifiers.bits.rightShift = 0;
   7711     012B  308F               	movlw	143
   7712     012C  0086               	movwf	6
   7713     012D  3023               	movlw	35
   7714     012E  0087               	movwf	7
   7715     012F  1281               	bcf	1,5
   7716                           
-  7717                           ;app_device_keyboard.c: 481:                 } else {
+  7717                           ;app_device_keyboard.c: 483:                 } else {
   7718     0130  0008               	return
   7719     0131                     l6215:
   7720                           
-  7721                           ;app_device_keyboard.c: 482:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
+  7721                           ;app_device_keyboard.c: 484:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
       +                          SBHID(scanCode);
   7722     0131  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7723     0132  3192  220F  3180   	fcall	_PS2USB_ScanCodeToUSBHID
   7724     0135  00CD               	movwf	APP_KeyboardUpdateState@usbHidCode_2856^(0+128)
   7725                           
-  7726                           ;app_device_keyboard.c: 483:                     GenericQueue_Remove(&keyboard.keys, &us
+  7726                           ;app_device_keyboard.c: 485:                     GenericQueue_Remove(&keyboard.keys, &us
       +                          bHidCode);
   7727     0136  3030               	movlw	48
   7728     0137  00C0               	movwf	GenericQueue_Remove@q^(0+128)
@@ -7976,13 +7976,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7741     0144  1D03               	btfss	3,2
   7742     0145  296E               	goto	l6225
   7743                           
-  7744                           ;app_device_keyboard.c: 486:                 if (PS2Keyboard_GetLastCommand() == 0xED) {
+  7744                           ;app_device_keyboard.c: 488:                 if (PS2Keyboard_GetLastCommand() == 0xED) {
   7745     0146  319E  2683  3180   	fcall	_PS2Keyboard_GetLastCommand
   7746     0149  3AED               	xorlw	237
   7747     014A  1D03               	skipz
   7748     014B  0008               	return
   7749                           
-  7750                           ;app_device_keyboard.c: 487:                     uint8_t leds = (uint8_t)(keyboard.leds.
+  7750                           ;app_device_keyboard.c: 489:                     uint8_t leds = (uint8_t)(keyboard.leds.
       +                          bits.numLock << 1)
   7751     014C  3090               	movlw	144
   7752     014D  0086               	movwf	6
@@ -8016,7 +8016,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7780     0168  0449               	iorwf	??_APP_KeyboardUpdateState^(0+128),w
   7781     0169  00CB               	movwf	APP_KeyboardUpdateState@leds^(0+128)
   7782                           
-  7783                           ;app_device_keyboard.c: 490:                     PS2Keyboard_SendCommand(leds);
+  7783                           ;app_device_keyboard.c: 492:                     PS2Keyboard_SendCommand(leds);
   7784     016A  084B               	movf	APP_KeyboardUpdateState@leds^(0+128),w
   7785     016B  3191  219B         	fcall	_PS2Keyboard_SendCommand
   7786     016D  0008               	return
@@ -8042,7 +8042,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7806     0180  1903               	btfsc	3,2
   7807     0181  0008               	return
   7808                           
-  7809                           ;app_device_keyboard.c: 498:                 if (scanCode->value == 0x12) {
+  7809                           ;app_device_keyboard.c: 500:                 if (scanCode->value == 0x12) {
   7810     0182  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7811     0183  0086               	movwf	6
   7812     0184  0187               	clrf	7
@@ -8051,14 +8051,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7815     0187  1D03               	btfss	3,2
   7816     0188  298F               	goto	l6235
   7817                           
-  7818                           ;app_device_keyboard.c: 499:                     keyboard.modifiers.bits.leftShift = 1;
+  7818                           ;app_device_keyboard.c: 501:                     keyboard.modifiers.bits.leftShift = 1;
   7819     0189  308F               	movlw	143
   7820     018A  0086               	movwf	6
   7821     018B  3023               	movlw	35
   7822     018C  0087               	movwf	7
   7823     018D  1481               	bsf	1,1
   7824                           
-  7825                           ;app_device_keyboard.c: 500:                 } else if (scanCode->value == 0X14) {
+  7825                           ;app_device_keyboard.c: 502:                 } else if (scanCode->value == 0X14) {
   7826     018E  0008               	return
   7827     018F                     l6235:
   7828     018F  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -8069,7 +8069,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7833     0194  1D03               	btfss	3,2
   7834     0195  299C               	goto	l6239
   7835                           
-  7836                           ;app_device_keyboard.c: 501:                     keyboard.modifiers.bits.leftControl = 1
+  7836                           ;app_device_keyboard.c: 503:                     keyboard.modifiers.bits.leftControl = 1
       +                          ;
   7837     0196  308F               	movlw	143
   7838     0197  0086               	movwf	6
@@ -8077,7 +8077,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7840     0199  0087               	movwf	7
   7841     019A  1401               	bsf	1,0
   7842                           
-  7843                           ;app_device_keyboard.c: 502:                 } else if (scanCode->value == 0x11) {
+  7843                           ;app_device_keyboard.c: 504:                 } else if (scanCode->value == 0x11) {
   7844     019B  0008               	return
   7845     019C                     l6239:
   7846     019C  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -8088,14 +8088,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7851     01A1  1D03               	btfss	3,2
   7852     01A2  29A9               	goto	l6243
   7853                           
-  7854                           ;app_device_keyboard.c: 503:                     keyboard.modifiers.bits.leftAlt = 1;
+  7854                           ;app_device_keyboard.c: 505:                     keyboard.modifiers.bits.leftAlt = 1;
   7855     01A3  308F               	movlw	143
   7856     01A4  0086               	movwf	6
   7857     01A5  3023               	movlw	35
   7858     01A6  0087               	movwf	7
   7859     01A7  1501               	bsf	1,2
   7860                           
-  7861                           ;app_device_keyboard.c: 504:                 } else if (scanCode->value == 0x59) {
+  7861                           ;app_device_keyboard.c: 506:                 } else if (scanCode->value == 0x59) {
   7862     01A8  0008               	return
   7863     01A9                     l6243:
   7864     01A9  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
@@ -8106,24 +8106,24 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7869     01AE  1D03               	btfss	3,2
   7870     01AF  29B6               	goto	l6247
   7871                           
-  7872                           ;app_device_keyboard.c: 505:                     keyboard.modifiers.bits.rightShift = 1;
+  7872                           ;app_device_keyboard.c: 507:                     keyboard.modifiers.bits.rightShift = 1;
   7873     01B0  308F               	movlw	143
   7874     01B1  0086               	movwf	6
   7875     01B2  3023               	movlw	35
   7876     01B3  0087               	movwf	7
   7877     01B4  1681               	bsf	1,5
   7878                           
-  7879                           ;app_device_keyboard.c: 506:                 } else {
+  7879                           ;app_device_keyboard.c: 508:                 } else {
   7880     01B5  0008               	return
   7881     01B6                     l6247:
   7882                           
-  7883                           ;app_device_keyboard.c: 507:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
+  7883                           ;app_device_keyboard.c: 509:                     uint8_t usbHidCode = PS2USB_ScanCodeToU
       +                          SBHID(scanCode);
   7884     01B6  0850               	movf	APP_KeyboardUpdateState@scanCode^(0+128),w
   7885     01B7  3192  220F  3180   	fcall	_PS2USB_ScanCodeToUSBHID
   7886     01BA  00CF               	movwf	APP_KeyboardUpdateState@usbHidCode_2864^(0+128)
   7887                           
-  7888                           ;app_device_keyboard.c: 508:                     if (!GenericQueue_Contains(&keyboard.ke
+  7888                           ;app_device_keyboard.c: 510:                     if (!GenericQueue_Contains(&keyboard.ke
       +                          ys, &usbHidCode)) {
   7889     01BB  3030               	movlw	48
   7890     01BC  00BE               	movwf	GenericQueue_Contains@q^(0+128)
@@ -8136,7 +8136,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7897     01C5  1D03               	skipz
   7898     01C6  0008               	return
   7899                           
-  7900                           ;app_device_keyboard.c: 509:                         GenericQueue_Enqueue(&keyboard.keys
+  7900                           ;app_device_keyboard.c: 511:                         GenericQueue_Enqueue(&keyboard.keys
       +                          , &usbHidCode);
   7901     01C7  3030               	movlw	48
   7902     01C8  00C0               	movwf	GenericQueue_Enqueue@q^(0+128)
@@ -9480,7 +9480,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   9175     1EFD                     __ptext45:	
   9176 ;; *************** function _APP_KeyboardProcessOutputReport *****************
   9177 ;; Defined at:
-  9178 ;;		line 517 in file "app_device_keyboard.c"
+  9178 ;;		line 519 in file "app_device_keyboard.c"
   9179 ;; Parameters:    Size  Location     Type
   9180 ;;		None
   9181 ;; Auto vars:     Size  Location     Type
@@ -9517,7 +9517,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   9207                           ;psect for function _APP_KeyboardProcessOutputReport
   9208                           
   9209                           
-  9210                           ;app_device_keyboard.c: 518:     keyboard.leds.value = outputReport.value;
+  9210                           ;app_device_keyboard.c: 520:     keyboard.leds.value = outputReport.value;
   9211                           
   9212                           ;incstack = 0
   9213                           ; Regs used in _APP_KeyboardProcessOutputReport: [wreg+fsr1l+fsr1h+status,2+status,0+pcl
@@ -9530,7 +9530,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   9219     1F02  0820               	movf	32,w	;volatile
   9220     1F03  0081               	movwf	1
   9221                           
-  9222                           ;app_device_keyboard.c: 519:     PS2Keyboard_SendCommand(0xED);
+  9222                           ;app_device_keyboard.c: 521:     PS2Keyboard_SendCommand(0xED);
   9223     1F04  30ED               	movlw	237
   9224     1F05  3191  219B         	fcall	_PS2Keyboard_SendCommand
   9225     1F07  0008               	return
@@ -13473,7 +13473,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  12948     1F52                     __ptext66:	
  12949 ;; *************** function _USBHIDCBSetReportHandler *****************
  12950 ;; Defined at:
- 12951 ;;		line 531 in file "app_device_keyboard.c"
+ 12951 ;;		line 533 in file "app_device_keyboard.c"
  12952 ;; Parameters:    Size  Location     Type
  12953 ;;		None
  12954 ;; Auto vars:     Size  Location     Type
@@ -13509,7 +13509,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  12979                           ;psect for function _USBHIDCBSetReportHandler
  12980                           
  12981                           
- 12982                           ;app_device_keyboard.c: 535:     {outPipes[0].pDst.bRam = (uint8_t*) & CtrlTrfData;outPi
+ 12982                           ;app_device_keyboard.c: 537:     {outPipes[0].pDst.bRam = (uint8_t*) & CtrlTrfData;outPi
       +                          pes[0].wCount.Val = 8;outPipes[0].pFunc = USBHIDCBSetReportComplete;outPipes[0].info.bit
       +                          s.busy = 1; };
  12983                           
@@ -13534,7 +13534,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13002     1F45                     __ptext67:	
  13003 ;; *************** function _USBHIDCBSetIdleRateHandler *****************
  13004 ;; Defined at:
- 13005 ;;		line 542 in file "app_device_keyboard.c"
+ 13005 ;;		line 544 in file "app_device_keyboard.c"
  13006 ;; Parameters:    Size  Location     Type
  13007 ;;  reportID        1    wreg     unsigned char 
  13008 ;;  newIdleRate     1    0[COMMON] unsigned char 
@@ -13576,12 +13576,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13039                           ;USBHIDCBSetIdleRateHandler@reportID stored from wreg
  13040     1F45  00F3               	movwf	USBHIDCBSetIdleRateHandler@reportID
  13041                           
- 13042                           ;app_device_keyboard.c: 546:     if (reportID == 0) {
+ 13042                           ;app_device_keyboard.c: 548:     if (reportID == 0) {
  13043     1F46  0873               	movf	USBHIDCBSetIdleRateHandler@reportID,w
  13044     1F47  1D03               	btfss	3,2
  13045     1F48  0008               	return
  13046                           
- 13047                           ;app_device_keyboard.c: 547:         keyboardIdleRate = newIdleRate;
+ 13047                           ;app_device_keyboard.c: 549:         keyboardIdleRate = newIdleRate;
  13048     1F49  0870               	movf	USBHIDCBSetIdleRateHandler@newIdleRate,w
  13049     1F4A  00F1               	movwf	??_USBHIDCBSetIdleRateHandler
  13050     1F4B  01F2               	clrf	??_USBHIDCBSetIdleRateHandler+1
@@ -13597,7 +13597,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13060     080A                     __ptext68:	
  13061 ;; *************** function _APP_KeyboardInit *****************
  13062 ;; Defined at:
- 13063 ;;		line 309 in file "app_device_keyboard.c"
+ 13063 ;;		line 311 in file "app_device_keyboard.c"
  13064 ;; Parameters:    Size  Location     Type
  13065 ;;		None
  13066 ;; Auto vars:     Size  Location     Type
@@ -13636,7 +13636,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13094                           ;psect for function _APP_KeyboardInit
  13095                           
  13096                           
- 13097                           ;app_device_keyboard.c: 310:     GenericQueue_Init(&keyboard.keys, sizeof (uint8_t));
+ 13097                           ;app_device_keyboard.c: 312:     GenericQueue_Init(&keyboard.keys, sizeof (uint8_t));
  13098                           
  13099                           ;incstack = 0
  13100                           ; Regs used in _APP_KeyboardInit: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -13650,21 +13650,21 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13108     0811  00F3               	movwf	i1GenericQueue_Init@element_size+1
  13109     0812  3192  224E  3188   	fcall	i1_GenericQueue_Init
  13110                           
- 13111                           ;app_device_keyboard.c: 311:     keyboard.modifiers.value = 0;
+ 13111                           ;app_device_keyboard.c: 313:     keyboard.modifiers.value = 0;
  13112     0815  308F               	movlw	143
  13113     0816  0086               	movwf	6
  13114     0817  3023               	movlw	35
  13115     0818  0087               	movwf	7
  13116     0819  0181               	clrf	1
  13117                           
- 13118                           ;app_device_keyboard.c: 312:     keyboard.leds.value = 0;
+ 13118                           ;app_device_keyboard.c: 314:     keyboard.leds.value = 0;
  13119     081A  3090               	movlw	144
  13120     081B  0086               	movwf	6
  13121     081C  3023               	movlw	35
  13122     081D  0087               	movwf	7
  13123     081E  0181               	clrf	1
  13124                           
- 13125                           ;app_device_keyboard.c: 315:     keyboard.lastINTransmission = 0;
+ 13125                           ;app_device_keyboard.c: 317:     keyboard.lastINTransmission = 0;
  13126     081F  302C               	movlw	44
  13127     0820  0086               	movwf	6
  13128     0821  3023               	movlw	35
@@ -13673,19 +13673,19 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13131     0824  3FC0               	movwi [0]fsr1
  13132     0825  3FC1               	movwi [1]fsr1
  13133                           
- 13134                           ;app_device_keyboard.c: 318:     keyboardIdleRate = 250;
+ 13134                           ;app_device_keyboard.c: 320:     keyboardIdleRate = 250;
  13135     0826  30FA               	movlw	250
  13136     0827  0022               	movlb	2	; select bank2
  13137     0828  00B8               	movwf	_keyboardIdleRate^(0+256)
  13138     0829  3000               	movlw	0
  13139     082A  00B9               	movwf	(_keyboardIdleRate^(0+256)+1)
  13140     082B                     i1l859:	
- 13141                           ;app_device_keyboard.c: 325:     }
+ 13141                           ;app_device_keyboard.c: 327:     }
  13142                           
- 13143                           ;app_device_keyboard.c: 323:     while (OldSOFCount != SOFCounter) {
+ 13143                           ;app_device_keyboard.c: 325:     while (OldSOFCount != SOFCounter) {
  13144                           
  13145                           
- 13146                           ;app_device_keyboard.c: 323:     while (OldSOFCount != SOFCounter) {
+ 13146                           ;app_device_keyboard.c: 325:     while (OldSOFCount != SOFCounter) {
  13147     082B  083B               	movf	(_SOFCounter+1)^(0+256),w	;volatile
  13148     082C  0635               	xorwf	(_OldSOFCount+1)^(0+256),w
  13149     082D  1D03               	skipz
@@ -13696,7 +13696,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13154     0831  1903               	btfsc	3,2
  13155     0832  2838               	goto	i1l4047
  13156                           
- 13157                           ;app_device_keyboard.c: 324:         OldSOFCount = SOFCounter;
+ 13157                           ;app_device_keyboard.c: 326:         OldSOFCount = SOFCounter;
  13158     0833  083B               	movf	(_SOFCounter+1)^(0+256),w	;volatile
  13159     0834  00B5               	movwf	(_OldSOFCount+1)^(0+256)
  13160     0835  083A               	movf	_SOFCounter^(0+256),w	;volatile
@@ -13704,13 +13704,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  13162     0837  282B               	goto	i1l859
  13163     0838                     i1l4047:
  13164                           
- 13165                           ;app_device_keyboard.c: 328:     USBEnableEndpoint(1, 0x02 | 0x04 | 0x10 | 0x08);
+ 13165                           ;app_device_keyboard.c: 330:     USBEnableEndpoint(1, 0x02 | 0x04 | 0x10 | 0x08);
  13166     0838  301E               	movlw	30
  13167     0839  00F7               	movwf	USBEnableEndpoint@options
  13168     083A  3001               	movlw	1
  13169     083B  3192  222E  3188   	fcall	_USBEnableEndpoint
  13170                           
- 13171                           ;app_device_keyboard.c: 331:     keyboard.lastOUTTransmission = USBTransferOnePacket(1,0
+ 13171                           ;app_device_keyboard.c: 333:     keyboard.lastOUTTransmission = USBTransferOnePacket(1,0
       +                          ,(uint8_t*) & outputReport,sizeof (outputReport));
  13172     083E  01F0               	clrf	i1USBTransferOnePacket@dir
  13173     083F  3020               	movlw	32
@@ -15146,7 +15146,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  14518     1E92                     __ptext77:	
  14519 ;; *************** function _USBHIDCBSetReportComplete *****************
  14520 ;; Defined at:
- 14521 ;;		line 522 in file "app_device_keyboard.c"
+ 14521 ;;		line 524 in file "app_device_keyboard.c"
  14522 ;; Parameters:    Size  Location     Type
  14523 ;;		None
  14524 ;; Auto vars:     Size  Location     Type
@@ -15185,7 +15185,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  14552                           ;psect for function _USBHIDCBSetReportComplete
  14553                           
  14554                           
- 14555                           ;app_device_keyboard.c: 525:     outputReport.value = CtrlTrfData[0];
+ 14555                           ;app_device_keyboard.c: 527:     outputReport.value = CtrlTrfData[0];
  14556                           
  14557                           ;incstack = 0
  14558                           ; Regs used in _USBHIDCBSetReportComplete: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cs
@@ -15195,7 +15195,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  14561     1E94  0022               	movlb	2	; select bank2
  14562     1E95  00A0               	movwf	32	;volatile
  14563                           
- 14564                           ;app_device_keyboard.c: 528:     APP_KeyboardProcessOutputReport();
+ 14564                           ;app_device_keyboard.c: 530:     APP_KeyboardProcessOutputReport();
  14565     1E96  3188  2000         	fcall	i1_APP_KeyboardProcessOutputReport
  14566     1E98  0008               	return
  14567     1E99                     __end_of_USBHIDCBSetReportComplete:
@@ -15204,7 +15204,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  14570     0800                     __ptext78:	
  14571 ;; *************** function i1_APP_KeyboardProcessOutputReport *****************
  14572 ;; Defined at:
- 14573 ;;		line 517 in file "app_device_keyboard.c"
+ 14573 ;;		line 519 in file "app_device_keyboard.c"
  14574 ;; Parameters:    Size  Location     Type
  14575 ;;		None
  14576 ;; Auto vars:     Size  Location     Type
@@ -15241,7 +15241,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  14602                           ;psect for function i1_APP_KeyboardProcessOutputReport
  14603                           
  14604                           
- 14605                           ;app_device_keyboard.c: 518:     keyboard.leds.value = outputReport.value;
+ 14605                           ;app_device_keyboard.c: 520:     keyboard.leds.value = outputReport.value;
  14606                           
  14607                           ;incstack = 0
  14608                           ; Regs used in i1_APP_KeyboardProcessOutputReport: [wreg+fsr1l+fsr1h+status,2+status,0+p
@@ -15253,7 +15253,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
  14613     0804  0820               	movf	32,w	;volatile
  14614     0805  0081               	movwf	1
  14615                           
- 14616                           ;app_device_keyboard.c: 519:     PS2Keyboard_SendCommand(0xED);
+ 14616                           ;app_device_keyboard.c: 521:     PS2Keyboard_SendCommand(0xED);
  14617     0806  30ED               	movlw	237
  14618     0807  3191  2115         	fcall	i1_PS2Keyboard_SendCommand
  14619     0809  0008               	return
@@ -18733,7 +18733,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Sun Oct 20 21:29:59 2024
+Symbol Table                                                                                   Mon Oct 21 00:26:09 2024
 
                 ?_EUSART_SetRxInterruptHandler 00A8               __end_of_TMR2_SetInterruptHandler 1EE0  
                                    _USB_SD_Ptr 18BC                                 ___bmul@product 00AA  

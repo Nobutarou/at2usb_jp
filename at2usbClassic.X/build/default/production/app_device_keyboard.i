@@ -4856,16 +4856,18 @@ const struct {
         0x95, 0x06,
         0x75, 0x08,
         0x15, 0x00,
-        0x25, 0x65,
+
+        0x25, 0x8b,
         0x05, 0x07,
         0x19, 0x00,
-        0x29, 0x65,
+
+        0x29, 0x8b,
         0x81, 0x00,
         0xc0}
 };
-# 96 "app_device_keyboard.c"
+# 98 "app_device_keyboard.c"
 typedef struct {
-# 114 "app_device_keyboard.c"
+# 116 "app_device_keyboard.c"
     union {
         uint8_t value;
 
@@ -4880,9 +4882,9 @@ typedef struct {
             unsigned rightGUI : 1;
         } bits;
     } modifiers;
-# 136 "app_device_keyboard.c"
+# 138 "app_device_keyboard.c"
     unsigned : 8;
-# 180 "app_device_keyboard.c"
+# 182 "app_device_keyboard.c"
     uint8_t keys[6];
 } KEYBOARD_INPUT_REPORT;
 
@@ -4893,13 +4895,13 @@ typedef union {
     uint8_t value;
 
     struct {
-# 206 "app_device_keyboard.c"
+# 208 "app_device_keyboard.c"
         unsigned numLock : 1;
         unsigned capsLock : 1;
         unsigned scrollLock : 1;
         unsigned compose : 1;
         unsigned kana : 1;
-# 221 "app_device_keyboard.c"
+# 223 "app_device_keyboard.c"
         unsigned : 3;
     } leds;
 } KEYBOARD_OUTPUT_REPORT;
@@ -4978,7 +4980,7 @@ KEYBOARD_INPUT_REPORT oldInputReport;
 signed int keyboardIdleRate;
 signed int LocalSOFCount;
 static signed int OldSOFCount;
-# 309 "app_device_keyboard.c"
+# 311 "app_device_keyboard.c"
 void APP_KeyboardInit(void) {
     GenericQueue_Init(&keyboard.keys, sizeof (uint8_t));
     keyboard.modifiers.value = 0;
@@ -5100,7 +5102,7 @@ void APP_KeyboardTasks(const PS2ScanCode* scanCode) {
         }
 
     }
-# 438 "app_device_keyboard.c"
+# 440 "app_device_keyboard.c"
     if (((keyboard.lastOUTTransmission != 0x0000) && ((*(volatile uint8_t*)keyboard.lastOUTTransmission & 0x80) != 0x00)) == 0) {
         APP_KeyboardProcessOutputReport();
         keyboard.lastOUTTransmission = USBTransferOnePacket(1,0,(uint8_t*) & outputReport,sizeof (outputReport));
