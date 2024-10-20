@@ -1,4 +1,7 @@
 #include "ps2usb.h"
+//#include <xc.h>
+//#include <stdio.h>
+
 /* {{{ */
 static const uint8_t ps2UsbMap[] = {
     0x00, //00 -> nul
@@ -82,7 +85,7 @@ static const uint8_t ps2UsbMap[] = {
     0x2d, //4E -> '-'
     0x00, //4F -> nul
     0x00, //50 -> nul
-    0x31, //51 -> backslash
+    0x87, //51 -> backslash
     0x34, //52 -> :
     0x00, //53 -> nul
     0x2f, //54 -> atmark
@@ -796,9 +799,43 @@ static const uint8_t ps2ExtUsbMap[] = {
 /* }}} */
 
 uint8_t PS2USB_ScanCodeToUSBHID(const PS2ScanCode *scanCode) {
+//    // Ref URL: http://machoto2.g2.xrea.com/page/P16F1455/P16_K08.htm
+//    RCSTA   = 0b10010000; // RX enable. Do I need?
+//    // Async Tx enable
+//    // | OSRC | TX9 | TXEN | SYNC | SENDB | BRGH | TRMT | TX9D |
+//    // OSRC=any: ignore for async mode.
+//    // TX9=0   : 8-bit data
+//    // TXEN=1  : TX enable
+//    // SYNC=0  : async
+//    // SENDB=0 : unsure.
+//    // BRGH=1  : High speed baud rate
+//    // TRMT=0  : unsure
+//    // TX9D=0  : unsure 
+//    TXSTA   = 0b00100100; // Async TX enable
+//    BAUDCON = 0b00001000; // BRG16=1: 16-bit baud rate generator
+//    // I am unsure I should use FOSC=16Mhz or 48Mhz. 
+//    // For FOSC=16MHz and 9600bps,
+//    // SPBRG = 416 = 0b1|10100000
+//    // If FOSC=48MHz, this lead
+//    SPBRGH = 0b1;
+//    SPBRGL = 0b10100000;
+//    // If 48MHz,
+//    // SPBRG = 1249 = 0b100|11100001
+//    char s[11]="noext,0x00\n"; //set dummy str
+//    int i;
     if (scanCode->isExtend) {
+//        snprintf(s, sizeof(s), "isext,0x%d\n",(int)scanCode);
+//        for(i=0; i<10; i++) {
+//            while (!TXIF);
+//            TXREG = s[i];
+//        }
         return ps2ExtUsbMap[scanCode->value];
     } else {
+//        snprintf(s, sizeof(s), "noext,0x%d\n",(int)scanCode);
+//        for(i=0; i<10; i++) {
+//            while (!TXIF);
+//            TXREG = s[i];
+//        }
         return ps2UsbMap[scanCode->value];
     }
 }

@@ -6,10 +6,10 @@ Linker command line:
   --edf=/home/snob/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.7.242/xc8/pic/dat/20230907200743_en.msgs \
   -cn -h+dist/default/production/at2usbClassic.X.production.sym \
   --cmf=dist/default/production/at2usbClassic.X.production.cmf -z -Q16F1455 \
-  -o/tmp/xcXFeIcdi/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcXHFPMBi/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
   --fixupoverflow=error \
   -Mdist/default/production/at2usbClassic.X.production.map \
-  --md=/tmp/xcXFeIcdi/driver_tmp_0.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
+  --md=/tmp/xcXHFPMBi/driver_tmp_0.dat -E1 -ver=XC8 Compiler --acfsm=1493 \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
   -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh \
   -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0120h-016Fh \
@@ -32,7 +32,7 @@ Linker command line:
   -ASFR31=0F80h-0FEFh -ACONFIG=08007h-08008h -DCONFIG=2 \
   -AIDLOC=08000h-08003h -DIDLOC=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
   -DENTRY=2 -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE \
-  -pcinit=CODE -pfunctab=ENTRY -k /tmp/xcXFeIcdi/driver_tmp_12.o \
+  -pcinit=CODE -pfunctab=ENTRY -k /tmp/xcXHFPMBi/driver_tmp_12.o \
   dist/default/production/at2usbClassic.X.production.o 
 
 Object code version is 3.11
@@ -42,7 +42,7 @@ Machine type is 16F1455
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXFeIcdi/driver_tmp_12.o
+/tmp/xcXHFPMBi/driver_tmp_12.o
                 end_init                             3D       3D        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2        0       4

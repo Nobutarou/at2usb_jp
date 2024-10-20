@@ -141,6 +141,9 @@ uint8_t PS2Keyboard_GetLastCommand(void);
 uint8_t PS2USB_ScanCodeToUSBHID(const PS2ScanCode *scanCode);
 # 2 "ps2usb.c" 2
 
+
+
+
 static const uint8_t ps2UsbMap[] = {
     0x00,
     0x42,
@@ -223,7 +226,7 @@ static const uint8_t ps2UsbMap[] = {
     0x2d,
     0x00,
     0x00,
-    0x31,
+    0x87,
     0x34,
     0x00,
     0x2f,
@@ -275,7 +278,7 @@ static const uint8_t ps2UsbMap[] = {
     0x00,
     0x40
 };
-# 278 "ps2usb.c"
+# 281 "ps2usb.c"
 static const uint8_t ps2ExtUsbMap[] = {
     0x00,
     0x00,
@@ -533,11 +536,22 @@ static const uint8_t ps2ExtUsbMap[] = {
     0x00,
     0x00
 };
-# 798 "ps2usb.c"
+# 801 "ps2usb.c"
 uint8_t PS2USB_ScanCodeToUSBHID(const PS2ScanCode *scanCode) {
+# 826 "ps2usb.c"
     if (scanCode->isExtend) {
+
+
+
+
+
         return ps2ExtUsbMap[scanCode->value];
     } else {
+
+
+
+
+
         return ps2UsbMap[scanCode->value];
     }
 }

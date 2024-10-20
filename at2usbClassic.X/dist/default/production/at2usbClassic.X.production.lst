@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Sat Oct 19 18:29:14 2024
+                                                                                               Sun Oct 20 21:29:59 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9 
      1                           	processor	16F1455
@@ -2449,7 +2449,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   2435     104E  342D               	retlw	45
   2436     104F  3400               	retlw	0
   2437     1050  3400               	retlw	0
-  2438     1051  3431               	retlw	49
+  2438     1051  3487               	retlw	135
   2439     1052  3434               	retlw	52
   2440     1053  3400               	retlw	0
   2441     1054  342F               	retlw	47
@@ -8154,7 +8154,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7914     120F                     __ptext34:	
   7915 ;; *************** function _PS2USB_ScanCodeToUSBHID *****************
   7916 ;; Defined at:
-  7917 ;;		line 798 in file "ps2usb.c"
+  7917 ;;		line 801 in file "ps2usb.c"
   7918 ;; Parameters:    Size  Location     Type
   7919 ;;  scanCode        1    wreg     PTR const struct PS2Scan
   7920 ;;		 -> main@scanCode(3), NULL(0), 
@@ -8198,7 +8198,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7953                           ;PS2USB_ScanCodeToUSBHID@scanCode stored from wreg
   7954     120F  00A8               	movwf	PS2USB_ScanCodeToUSBHID@scanCode^(0+128)
   7955                           
-  7956                           ;ps2usb.c: 799:     if (scanCode->isExtend) {
+  7956                           ;ps2usb.c: 826:     if (scanCode->isExtend) {
   7957     1210  0A28               	incf	PS2USB_ScanCodeToUSBHID@scanCode^(0+128),w
   7958     1211  0086               	movwf	6
   7959     1212  0187               	clrf	7
@@ -8206,7 +8206,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7961     1214  1903               	btfsc	3,2
   7962     1215  2A22               	goto	l4845
   7963                           
-  7964                           ;ps2usb.c: 800:         return ps2ExtUsbMap[scanCode->value];
+  7964                           ;ps2usb.c: 832:         return ps2ExtUsbMap[scanCode->value];
   7965     1216  0828               	movf	PS2USB_ScanCodeToUSBHID@scanCode^(0+128),w
   7966     1217  0086               	movwf	6
   7967     1218  0187               	clrf	7
@@ -8221,7 +8221,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og9
   7976     1221  0008               	return
   7977     1222                     l4845:
   7978                           
-  7979                           ;ps2usb.c: 802:         return ps2UsbMap[scanCode->value];
+  7979                           ;ps2usb.c: 839:         return ps2UsbMap[scanCode->value];
   7980     1222  0828               	movf	PS2USB_ScanCodeToUSBHID@scanCode^(0+128),w
   7981     1223  0086               	movwf	6
   7982     1224  0187               	clrf	7
@@ -18733,7 +18733,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Sat Oct 19 18:29:14 2024
+Symbol Table                                                                                   Sun Oct 20 21:29:59 2024
 
                 ?_EUSART_SetRxInterruptHandler 00A8               __end_of_TMR2_SetInterruptHandler 1EE0  
                                    _USB_SD_Ptr 18BC                                 ___bmul@product 00AA  
