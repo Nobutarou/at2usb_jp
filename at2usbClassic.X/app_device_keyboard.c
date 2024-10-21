@@ -480,6 +480,8 @@ static void APP_KeyboardUpdateState(const PS2ScanCode* scanCode) {
                     keyboard.modifiers.bits.leftAlt = 0;
                 } else if (scanCode->value == PS2_KC_R_SHIFT) {
                     keyboard.modifiers.bits.rightShift = 0;
+                } else if (scanCode->value == 0x58) {
+                    keyboard.modifiers.bits.leftGUI = 0; //fake caps to LWin.
                 } else {
                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
                     GenericQueue_Remove(&keyboard.keys, &usbHidCode);
@@ -505,6 +507,8 @@ static void APP_KeyboardUpdateState(const PS2ScanCode* scanCode) {
                     keyboard.modifiers.bits.leftAlt = 1;
                 } else if (scanCode->value == PS2_KC_R_SHIFT) {
                     keyboard.modifiers.bits.rightShift = 1;
+                } else if (scanCode->value == 0x58) {
+                    keyboard.modifiers.bits.leftGUI = 1; //fake caps to LWin.
                 } else {
                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
                     if (!GenericQueue_Contains(&keyboard.keys, &usbHidCode)) {

@@ -47,6 +47,9 @@ https://bsakatu.net/doc/usb-hid-to-scancode/
 キーの最大数というか修飾キーを除く HID コードの最大値が 0x65 (=101) となっていて JIS 配列
 特有の 0x80 番台のキー入力が無視されていたため変更。
 
+また Caps (PS/2 で 0x58) を左Win キーに偽装するのは、APP_KeyboardUpdateState() の中で行な
+う。
+
 # 回路図 for Justy JKB-89S
 
 内部では XH 5P コネクタとなっている。こっちの方が入手しやすいので、内部から直接つなぐこと

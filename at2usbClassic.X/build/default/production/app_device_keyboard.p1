@@ -1035,215 +1035,237 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;app_device_keyboard.c: 482:                     keyboard.modifiers.bits.rightShift = 0;
 [e = . . . _keyboard 3 1 5 -> -> 0 `i `uc ]
 "483
-[; ;app_device_keyboard.c: 483:                 } else {
+[; ;app_device_keyboard.c: 483:                 } else if (scanCode->value == 0x58) {
 }
 [e $U 421  ]
 [e :U 420 ]
+[e $ ! == -> . *U _scanCode 0 `i -> 88 `i 422  ]
 {
 "484
-[; ;app_device_keyboard.c: 484:                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
+[; ;app_device_keyboard.c: 484:                     keyboard.modifiers.bits.leftGUI = 0;
+[e = . . . _keyboard 3 1 3 -> -> 0 `i `uc ]
+"485
+[; ;app_device_keyboard.c: 485:                 } else {
+}
+[e $U 423  ]
+[e :U 422 ]
+{
+"486
+[; ;app_device_keyboard.c: 486:                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
 [v _usbHidCode `uc ~T0 @X0 1 a ]
 [e = _usbHidCode ( _PS2USB_ScanCodeToUSBHID (1 _scanCode ]
-"485
-[; ;app_device_keyboard.c: 485:                     GenericQueue_Remove(&keyboard.keys, &usbHidCode);
+"487
+[; ;app_device_keyboard.c: 487:                     GenericQueue_Remove(&keyboard.keys, &usbHidCode);
 [e ( _GenericQueue_Remove (2 , &U . _keyboard 2 -> &U _usbHidCode `*Cv ]
-"486
-[; ;app_device_keyboard.c: 486:                 }
+"488
+[; ;app_device_keyboard.c: 488:                 }
 }
+[e :U 423 ]
 [e :U 421 ]
 [e :U 419 ]
 [e :U 417 ]
 [e :U 415 ]
-"487
-[; ;app_device_keyboard.c: 487:             } else if (scanCode->value == 0xFA) {
-}
-[e $U 422  ]
-[e :U 413 ]
-[e $ ! == -> . *U _scanCode 0 `i -> 250 `i 423  ]
-{
-"488
-[; ;app_device_keyboard.c: 488:                 if (PS2Keyboard_GetLastCommand() == 0xED) {
-[e $ ! == -> ( _PS2Keyboard_GetLastCommand ..  `i -> 237 `i 424  ]
-{
 "489
-[; ;app_device_keyboard.c: 489:                     uint8_t leds = (uint8_t)(keyboard.leds.bits.numLock << 1)
+[; ;app_device_keyboard.c: 489:             } else if (scanCode->value == 0xFA) {
+}
+[e $U 424  ]
+[e :U 413 ]
+[e $ ! == -> . *U _scanCode 0 `i -> 250 `i 425  ]
+{
+"490
+[; ;app_device_keyboard.c: 490:                 if (PS2Keyboard_GetLastCommand() == 0xED) {
+[e $ ! == -> ( _PS2Keyboard_GetLastCommand ..  `i -> 237 `i 426  ]
+{
+"491
+[; ;app_device_keyboard.c: 491:                     uint8_t leds = (uint8_t)(keyboard.leds.bits.numLock << 1)
 [v _leds `uc ~T0 @X0 1 a ]
 [e = _leds -> | | -> -> << -> . . . _keyboard 4 1 0 `i -> 1 `i `uc `i -> -> << -> . . . _keyboard 4 1 1 `i -> 2 `i `uc `i -> -> << -> . . . _keyboard 4 1 2 `i -> 0 `i `uc `i `uc ]
-"492
-[; ;app_device_keyboard.c: 492:                     PS2Keyboard_SendCommand(leds);
-[e ( _PS2Keyboard_SendCommand (1 _leds ]
-"493
-[; ;app_device_keyboard.c: 493:                 }
-}
-[e :U 424 ]
 "494
-[; ;app_device_keyboard.c: 494:             } else if (scanCode->value == 0xFC
+[; ;app_device_keyboard.c: 494:                     PS2Keyboard_SendCommand(leds);
+[e ( _PS2Keyboard_SendCommand (1 _leds ]
+"495
+[; ;app_device_keyboard.c: 495:                 }
 }
-[e $U 425  ]
-[e :U 423 ]
-[e $ ! || || == -> . *U _scanCode 0 `i -> 252 `i == -> . *U _scanCode 0 `i -> 255 `i == -> . *U _scanCode 0 `i -> 170 `i 426  ]
+[e :U 426 ]
 "496
-[; ;app_device_keyboard.c: 496:                     || scanCode->value == 0xAA) {
-{
-"498
-[; ;app_device_keyboard.c: 498:             } else {
+[; ;app_device_keyboard.c: 496:             } else if (scanCode->value == 0xFC
 }
 [e $U 427  ]
-[e :U 426 ]
+[e :U 425 ]
+[e $ ! || || == -> . *U _scanCode 0 `i -> 252 `i == -> . *U _scanCode 0 `i -> 255 `i == -> . *U _scanCode 0 `i -> 170 `i 428  ]
+"498
+[; ;app_device_keyboard.c: 498:                     || scanCode->value == 0xAA) {
 {
 "500
-[; ;app_device_keyboard.c: 500:                 if (scanCode->value == 0x12) {
-[e $ ! == -> . *U _scanCode 0 `i -> 18 `i 428  ]
-{
-"501
-[; ;app_device_keyboard.c: 501:                     keyboard.modifiers.bits.leftShift = 1;
-[e = . . . _keyboard 3 1 1 -> -> 1 `i `uc ]
-"502
-[; ;app_device_keyboard.c: 502:                 } else if (scanCode->value == 0X14) {
+[; ;app_device_keyboard.c: 500:             } else {
 }
 [e $U 429  ]
 [e :U 428 ]
-[e $ ! == -> . *U _scanCode 0 `i -> 20 `i 430  ]
+{
+"502
+[; ;app_device_keyboard.c: 502:                 if (scanCode->value == 0x12) {
+[e $ ! == -> . *U _scanCode 0 `i -> 18 `i 430  ]
 {
 "503
-[; ;app_device_keyboard.c: 503:                     keyboard.modifiers.bits.leftControl = 1;
-[e = . . . _keyboard 3 1 0 -> -> 1 `i `uc ]
+[; ;app_device_keyboard.c: 503:                     keyboard.modifiers.bits.leftShift = 1;
+[e = . . . _keyboard 3 1 1 -> -> 1 `i `uc ]
 "504
-[; ;app_device_keyboard.c: 504:                 } else if (scanCode->value == 0x11) {
+[; ;app_device_keyboard.c: 504:                 } else if (scanCode->value == 0X14) {
 }
 [e $U 431  ]
 [e :U 430 ]
-[e $ ! == -> . *U _scanCode 0 `i -> 17 `i 432  ]
+[e $ ! == -> . *U _scanCode 0 `i -> 20 `i 432  ]
 {
 "505
-[; ;app_device_keyboard.c: 505:                     keyboard.modifiers.bits.leftAlt = 1;
-[e = . . . _keyboard 3 1 2 -> -> 1 `i `uc ]
+[; ;app_device_keyboard.c: 505:                     keyboard.modifiers.bits.leftControl = 1;
+[e = . . . _keyboard 3 1 0 -> -> 1 `i `uc ]
 "506
-[; ;app_device_keyboard.c: 506:                 } else if (scanCode->value == 0x59) {
+[; ;app_device_keyboard.c: 506:                 } else if (scanCode->value == 0x11) {
 }
 [e $U 433  ]
 [e :U 432 ]
-[e $ ! == -> . *U _scanCode 0 `i -> 89 `i 434  ]
+[e $ ! == -> . *U _scanCode 0 `i -> 17 `i 434  ]
 {
 "507
-[; ;app_device_keyboard.c: 507:                     keyboard.modifiers.bits.rightShift = 1;
-[e = . . . _keyboard 3 1 5 -> -> 1 `i `uc ]
+[; ;app_device_keyboard.c: 507:                     keyboard.modifiers.bits.leftAlt = 1;
+[e = . . . _keyboard 3 1 2 -> -> 1 `i `uc ]
 "508
-[; ;app_device_keyboard.c: 508:                 } else {
+[; ;app_device_keyboard.c: 508:                 } else if (scanCode->value == 0x59) {
 }
 [e $U 435  ]
 [e :U 434 ]
+[e $ ! == -> . *U _scanCode 0 `i -> 89 `i 436  ]
 {
 "509
-[; ;app_device_keyboard.c: 509:                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
-[v _usbHidCode `uc ~T0 @X0 1 a ]
-[e = _usbHidCode ( _PS2USB_ScanCodeToUSBHID (1 _scanCode ]
+[; ;app_device_keyboard.c: 509:                     keyboard.modifiers.bits.rightShift = 1;
+[e = . . . _keyboard 3 1 5 -> -> 1 `i `uc ]
 "510
-[; ;app_device_keyboard.c: 510:                     if (!GenericQueue_Contains(&keyboard.keys, &usbHidCode)) {
-[e $ ! ! != -> ( _GenericQueue_Contains (2 , &U . _keyboard 2 -> &U _usbHidCode `*Cv `i -> 0 `i 436  ]
+[; ;app_device_keyboard.c: 510:                 } else if (scanCode->value == 0x58) {
+}
+[e $U 437  ]
+[e :U 436 ]
+[e $ ! == -> . *U _scanCode 0 `i -> 88 `i 438  ]
 {
 "511
-[; ;app_device_keyboard.c: 511:                         GenericQueue_Enqueue(&keyboard.keys, &usbHidCode);
-[e ( _GenericQueue_Enqueue (2 , &U . _keyboard 2 -> &U _usbHidCode `*Cv ]
+[; ;app_device_keyboard.c: 511:                     keyboard.modifiers.bits.leftGUI = 1;
+[e = . . . _keyboard 3 1 3 -> -> 1 `i `uc ]
 "512
-[; ;app_device_keyboard.c: 512:                     }
+[; ;app_device_keyboard.c: 512:                 } else {
 }
-[e :U 436 ]
+[e $U 439  ]
+[e :U 438 ]
+{
 "513
-[; ;app_device_keyboard.c: 513:                 }
+[; ;app_device_keyboard.c: 513:                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
+[v _usbHidCode `uc ~T0 @X0 1 a ]
+[e = _usbHidCode ( _PS2USB_ScanCodeToUSBHID (1 _scanCode ]
+"514
+[; ;app_device_keyboard.c: 514:                     if (!GenericQueue_Contains(&keyboard.keys, &usbHidCode)) {
+[e $ ! ! != -> ( _GenericQueue_Contains (2 , &U . _keyboard 2 -> &U _usbHidCode `*Cv `i -> 0 `i 440  ]
+{
+"515
+[; ;app_device_keyboard.c: 515:                         GenericQueue_Enqueue(&keyboard.keys, &usbHidCode);
+[e ( _GenericQueue_Enqueue (2 , &U . _keyboard 2 -> &U _usbHidCode `*Cv ]
+"516
+[; ;app_device_keyboard.c: 516:                     }
 }
+[e :U 440 ]
+"517
+[; ;app_device_keyboard.c: 517:                 }
+}
+[e :U 439 ]
+[e :U 437 ]
 [e :U 435 ]
 [e :U 433 ]
 [e :U 431 ]
-[e :U 429 ]
-"514
-[; ;app_device_keyboard.c: 514:             }
+"518
+[; ;app_device_keyboard.c: 518:             }
 }
+[e :U 429 ]
 [e :U 427 ]
-[e :U 425 ]
-[e :U 422 ]
-"515
-[; ;app_device_keyboard.c: 515:         }
+[e :U 424 ]
+"519
+[; ;app_device_keyboard.c: 519:         }
 }
 [e :U 412 ]
-"516
-[; ;app_device_keyboard.c: 516:     }
+"520
+[; ;app_device_keyboard.c: 520:     }
 }
 [e :U 399 ]
-"517
-[; ;app_device_keyboard.c: 517: }
+"521
+[; ;app_device_keyboard.c: 521: }
 [e :UE 398 ]
 }
-"519
-[; ;app_device_keyboard.c: 519: static void APP_KeyboardProcessOutputReport(void) {
+"523
+[; ;app_device_keyboard.c: 523: static void APP_KeyboardProcessOutputReport(void) {
 [v _APP_KeyboardProcessOutputReport `(v ~T0 @X0 1 sf ]
 {
 [e :U _APP_KeyboardProcessOutputReport ]
 [f ]
-"520
-[; ;app_device_keyboard.c: 520:     keyboard.leds.value = outputReport.value;
-[e = . . _keyboard 4 0 . _outputReport 0 ]
-"521
-[; ;app_device_keyboard.c: 521:     PS2Keyboard_SendCommand(0xED);
-[e ( _PS2Keyboard_SendCommand (1 -> -> 237 `i `uc ]
-"522
-[; ;app_device_keyboard.c: 522: }
-[e :UE 437 ]
-}
 "524
-[; ;app_device_keyboard.c: 524: static void USBHIDCBSetReportComplete(void) {
+[; ;app_device_keyboard.c: 524:     keyboard.leds.value = outputReport.value;
+[e = . . _keyboard 4 0 . _outputReport 0 ]
+"525
+[; ;app_device_keyboard.c: 525:     PS2Keyboard_SendCommand(0xED);
+[e ( _PS2Keyboard_SendCommand (1 -> -> 237 `i `uc ]
+"526
+[; ;app_device_keyboard.c: 526: }
+[e :UE 441 ]
+}
+"528
+[; ;app_device_keyboard.c: 528: static void USBHIDCBSetReportComplete(void) {
 [v _USBHIDCBSetReportComplete `(v ~T0 @X0 1 sf ]
 {
 [e :U _USBHIDCBSetReportComplete ]
 [f ]
-"527
-[; ;app_device_keyboard.c: 527:     outputReport.value = CtrlTrfData[0];
-[e = . _outputReport 0 *U + &U _CtrlTrfData * -> -> -> 0 `i `ui `ux -> -> # *U &U _CtrlTrfData `ui `ux ]
-"530
-[; ;app_device_keyboard.c: 530:     APP_KeyboardProcessOutputReport();
-[e ( _APP_KeyboardProcessOutputReport ..  ]
 "531
-[; ;app_device_keyboard.c: 531: }
-[e :UE 438 ]
+[; ;app_device_keyboard.c: 531:     outputReport.value = CtrlTrfData[0];
+[e = . _outputReport 0 *U + &U _CtrlTrfData * -> -> -> 0 `i `ui `ux -> -> # *U &U _CtrlTrfData `ui `ux ]
+"534
+[; ;app_device_keyboard.c: 534:     APP_KeyboardProcessOutputReport();
+[e ( _APP_KeyboardProcessOutputReport ..  ]
+"535
+[; ;app_device_keyboard.c: 535: }
+[e :UE 442 ]
 }
-"533
-[; ;app_device_keyboard.c: 533: void USBHIDCBSetReportHandler(void) {
+"537
+[; ;app_device_keyboard.c: 537: void USBHIDCBSetReportHandler(void) {
 [v _USBHIDCBSetReportHandler `(v ~T0 @X0 1 ef ]
 {
 [e :U _USBHIDCBSetReportHandler ]
 [f ]
-"537
-[; ;app_device_keyboard.c: 537:     {outPipes[0].pDst.bRam = (uint8_t*) & CtrlTrfData;outPipes[0].wCount.Val = 8;outPipes[0].pFunc = USBHIDCBSetReportComplete;outPipes[0].info.bits.busy = 1; };
+"541
+[; ;app_device_keyboard.c: 541:     {outPipes[0].pDst.bRam = (uint8_t*) & CtrlTrfData;outPipes[0].wCount.Val = 8;outPipes[0].pFunc = USBHIDCBSetReportComplete;outPipes[0].info.bits.busy = 1; };
 {
 [e = . . *U + &U _outPipes * -> -> -> 0 `i `ui `ux -> -> # *U &U _outPipes `ui `ux 0 0 -> &U _CtrlTrfData `*uc ]
 [e = . . *U + &U _outPipes * -> -> -> 0 `i `ui `ux -> -> # *U &U _outPipes `ui `ux 2 0 -> -> 8 `i `us ]
 [e = . *U + &U _outPipes * -> -> -> 0 `i `ui `ux -> -> # *U &U _outPipes `ui `ux 3 &U _USBHIDCBSetReportComplete ]
 [e = . . . *U + &U _outPipes * -> -> -> 0 `i `ui `ux -> -> # *U &U _outPipes `ui `ux 1 0 1 -> -> 1 `i `uc ]
 }
-"538
-[; ;app_device_keyboard.c: 538: }
-[e :UE 439 ]
+"542
+[; ;app_device_keyboard.c: 542: }
+[e :UE 443 ]
 }
-"544
-[; ;app_device_keyboard.c: 544: void USBHIDCBSetIdleRateHandler(uint8_t reportID, uint8_t newIdleRate) {
+"548
+[; ;app_device_keyboard.c: 548: void USBHIDCBSetIdleRateHandler(uint8_t reportID, uint8_t newIdleRate) {
 [v _USBHIDCBSetIdleRateHandler `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _USBHIDCBSetIdleRateHandler ]
 [v _reportID `uc ~T0 @X0 1 r1 ]
 [v _newIdleRate `uc ~T0 @X0 1 r2 ]
 [f ]
-"548
-[; ;app_device_keyboard.c: 548:     if (reportID == 0) {
-[e $ ! == -> _reportID `i -> 0 `i 441  ]
+"552
+[; ;app_device_keyboard.c: 552:     if (reportID == 0) {
+[e $ ! == -> _reportID `i -> 0 `i 445  ]
 {
-"549
-[; ;app_device_keyboard.c: 549:         keyboardIdleRate = newIdleRate;
+"553
+[; ;app_device_keyboard.c: 553:         keyboardIdleRate = newIdleRate;
 [e = _keyboardIdleRate -> _newIdleRate `i ]
-"550
-[; ;app_device_keyboard.c: 550:     }
+"554
+[; ;app_device_keyboard.c: 554:     }
 }
-[e :U 441 ]
-"551
-[; ;app_device_keyboard.c: 551: }
-[e :UE 440 ]
+[e :U 445 ]
+"555
+[; ;app_device_keyboard.c: 555: }
+[e :UE 444 ]
 }
