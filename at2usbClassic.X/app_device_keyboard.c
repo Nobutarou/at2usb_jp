@@ -445,6 +445,11 @@ void APP_KeyboardTasks(const PS2ScanCode* scanCode) {
     return;
 }
 
+// General purpose flag
+// 0: normal
+// 1: Scroll lock is being pushed.
+static unsigned char oreflag = 0;
+
 static void APP_KeyboardUpdateState(const PS2ScanCode* scanCode) {
     if (scanCode != NULL) {
         if (scanCode->isExtend) {
@@ -475,17 +480,30 @@ static void APP_KeyboardUpdateState(const PS2ScanCode* scanCode) {
                 if (scanCode->value == PS2_KC_L_SHIFT) {
                     keyboard.modifiers.bits.leftShift = 0;
                 } else if (scanCode->value == PS2_KC_CTRL) {
-                    keyboard.modifiers.bits.leftControl = 0;
+                    if (oreflag == 0) {
+                      //Pause 離した時でないなら左 ctrl (0x14)
+                      keyboard.modifiers.bits.leftControl = 0;
+                    }
                 } else if (scanCode->value == PS2_KC_ALT) {
                     keyboard.modifiers.bits.leftAlt = 0;
                 } else if (scanCode->value == PS2_KC_R_SHIFT) {
                     keyboard.modifiers.bits.rightShift = 0;
                 } else if (scanCode->value == 0x58) {
                     keyboard.modifiers.bits.leftGUI = 0; //fake caps to LWin.
+                } else if (scanCode->value == 0x77 && oreflag == 1) {
+                  // flag をリセット。でも何もしない。  
+                  oreflag=0;
                 } else {
                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
                     GenericQueue_Remove(&keyboard.keys, &usbHidCode);
                 }
+            } else if (scanCode->value == 0xE1) {
+                  // E1 は Pause しか送らない。2回送られるが別に区別はしない
+                  oreflag = 1;
+            } else if (scanCode->value == 0x14 && oreflag == 1) {
+                // 何もしない
+            } else if (scanCode->value == 0x77 && oreflag == 1) {
+                // 何もしない
             } else if (scanCode->value == PS2_KC_ACK) {
                 if (PS2Keyboard_GetLastCommand() == PS2_KC_LOCK) {
                     uint8_t leds = (uint8_t)(keyboard.leds.bits.numLock << 1)

@@ -5111,6 +5111,11 @@ void APP_KeyboardTasks(const PS2ScanCode* scanCode) {
     return;
 }
 
+
+
+
+static unsigned char oreflag = 0;
+
 static void APP_KeyboardUpdateState(const PS2ScanCode* scanCode) {
     if (scanCode != ((void*)0)) {
         if (scanCode->isExtend) {
@@ -5141,17 +5146,30 @@ static void APP_KeyboardUpdateState(const PS2ScanCode* scanCode) {
                 if (scanCode->value == 0x12) {
                     keyboard.modifiers.bits.leftShift = 0;
                 } else if (scanCode->value == 0X14) {
-                    keyboard.modifiers.bits.leftControl = 0;
+                    if (oreflag == 0) {
+
+                      keyboard.modifiers.bits.leftControl = 0;
+                    }
                 } else if (scanCode->value == 0x11) {
                     keyboard.modifiers.bits.leftAlt = 0;
                 } else if (scanCode->value == 0x59) {
                     keyboard.modifiers.bits.rightShift = 0;
                 } else if (scanCode->value == 0x58) {
                     keyboard.modifiers.bits.leftGUI = 0;
+                } else if (scanCode->value == 0x77 && oreflag == 1) {
+
+                  oreflag=0;
                 } else {
                     uint8_t usbHidCode = PS2USB_ScanCodeToUSBHID(scanCode);
                     GenericQueue_Remove(&keyboard.keys, &usbHidCode);
                 }
+            } else if (scanCode->value == 0xE1) {
+
+                  oreflag = 1;
+            } else if (scanCode->value == 0x14 && oreflag == 1) {
+
+            } else if (scanCode->value == 0x77 && oreflag == 1) {
+
             } else if (scanCode->value == 0xFA) {
                 if (PS2Keyboard_GetLastCommand() == 0xED) {
                     uint8_t leds = (uint8_t)(keyboard.leds.bits.numLock << 1)

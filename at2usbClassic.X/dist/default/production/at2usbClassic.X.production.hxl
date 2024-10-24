@@ -1,24 +1,24 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- /tmp/xcXAALmMC/driver_tmp_3.o
+ /tmp/xcXJFgEDA/driver_tmp_3.o
  -Odist/default/production/at2usbClassic.X.production.hex
  -logfile=dist/default/production/at2usbClassic.X.production.hxl
  -addressing=2
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 318Fh		(/tmp/xcXAALmMC/driver_tmp_3.o)
-  3CCEh - 3FFFh		(/tmp/xcXAALmMC/driver_tmp_3.o)
-  1000Eh - 10011h		(/tmp/xcXAALmMC/driver_tmp_3.o)
+  0h - 318Fh		(/tmp/xcXJFgEDA/driver_tmp_3.o)
+  3C64h - 3FFFh		(/tmp/xcXJFgEDA/driver_tmp_3.o)
+  1000Eh - 10011h		(/tmp/xcXJFgEDA/driver_tmp_3.o)
  Unused ranges:
-  3190h - 3CCDh
+  3190h - 3C63h
   4000h - 1000Dh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (/tmp/xcXAALmMC/driver_tmp_3.o)
+  H1 = Input file             (/tmp/xcXJFgEDA/driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -816,7 +816,13 @@
 00003170 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00003180 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 ----------------------------------------------------------
-00003CC0 | -- -- -- -- -- -- -- -- -- -- -- -- -- -- H1 H1
+00003C60 | -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00003C70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00003C80 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00003C90 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00003CA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00003CB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00003CC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00003CD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00003CE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00003CF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
