@@ -63,4 +63,5 @@ https://bsakatu.net/doc/usb-hid-to-scancode/
 
 - [x] UART 完全削除。今は動かないだけで関数などは残っている
   - 残す。何もしなくてもそのまま RC4/TX に継ぐだけで PS/2 スキャンコードが出力されている。
+- [ ] コンビキー (Pause と PrintScreen) にちゃんと対応する
 - [ ] 使わない #define を削除
