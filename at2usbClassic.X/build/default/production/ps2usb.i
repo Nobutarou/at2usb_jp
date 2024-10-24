@@ -281,6 +281,8 @@ static const uint8_t ps2UsbMap[] = {
 
 
 
+
+
 static const uint8_t ps2ExtUsbMap[] = {
     0x00,
     0x00,
@@ -300,7 +302,7 @@ static const uint8_t ps2ExtUsbMap[] = {
     0x00,
     0x00,
     0xe6,
-    0x46,
+    0x00,
     0x00,
     0xe4,
     0x00,
@@ -541,7 +543,7 @@ static const uint8_t ps2ExtUsbMap[] = {
 
 
 uint8_t PS2USB_ScanCodeToUSBHID(const PS2ScanCode *scanCode) {
-# 427 "ps2usb.c"
+# 429 "ps2usb.c"
     if (scanCode->isExtend) {
 
 

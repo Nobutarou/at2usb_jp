@@ -140,6 +140,8 @@ static const uint8_t ps2UsbMap[] = {
 /* }}} */
 
 /* {{{ */
+// PrintScreen is e12+E7c combination. However e12 is not used by any other keys. Thus, I
+// just sent print screen when e7c is hit.
 static const uint8_t ps2ExtUsbMap[] = {
     0x00, //00
     0x00, //01
@@ -159,7 +161,7 @@ static const uint8_t ps2ExtUsbMap[] = {
     0x00, //0f
     0x00, //10
     0xe6, //11 -> RAlt
-    0x46, //12 -> Prt sc
+    0x00, //12 
     0x00, //13
     0xe4, //14 -> RCtrl
     0x00, //15

@@ -262,7 +262,7 @@ KeyboardStop 4
 [v _PS2Keyboard_DataInterrupt PS2Keyboard_DataInterrupt `(v  1 s 1 PS2Keyboard_DataInterrupt ]
 "86
 [v _PS2Keyboard_ClockInterrupt PS2Keyboard_ClockInterrupt `(v  1 s 1 PS2Keyboard_ClockInterrupt ]
-"402 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/ps2usb.c
+"404 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/ps2usb.c
 [v _PS2USB_ScanCodeToUSBHID PS2USB_ScanCodeToUSBHID `(uc  1 e 1 0 ]
 "12 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/systime.c
 [v _SysTime_Init SysTime_Init `(v  1 e 1 0 ]
@@ -728,7 +728,7 @@ KeyboardStop 4
 [v _prevTimeMs prevTimeMs `VEul  1 s 4 prevTimeMs ]
 "6 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/ps2usb.c
 [v _ps2UsbMap ps2UsbMap `DC[132]uc  1 s 132 ps2UsbMap ]
-"143
+"145
 [v _ps2ExtUsbMap ps2ExtUsbMap `DC[255]uc  1 s 255 ps2ExtUsbMap ]
 "8 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/systime.c
 [v _timeMs timeMs `ul  1 s 4 timeMs ]
@@ -1252,16 +1252,16 @@ KeyboardStop 4
 [v APP_KeyboardUpdateState@scanCode scanCode `*.4DCS2531  1 a 1 40 ]
 "521
 } 0
-"402 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/ps2usb.c
+"404 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/ps2usb.c
 [v _PS2USB_ScanCodeToUSBHID PS2USB_ScanCodeToUSBHID `(uc  1 e 1 0 ]
 {
 [s S2531 PS2ScanCode 3 `uc 1 value 1 0 `a 1 isExtend 1 1 `a 1 isBreak 1 2 ]
 [v PS2USB_ScanCodeToUSBHID@scanCode scanCode `*.4DCS2531  1 a 1 wreg ]
 [v PS2USB_ScanCodeToUSBHID@scanCode scanCode `*.4DCS2531  1 a 1 wreg ]
-"427
-"402
+"429
+"404
 [v PS2USB_ScanCodeToUSBHID@scanCode scanCode `*.4DCS2531  1 a 1 0 ]
-"442
+"444
 } 0
 "75 /home/snob/github/nobutarou/at2usb_jp/at2usbClassic.X/ps2_keyboard.c
 [v _PS2Keyboard_GetLastCommand PS2Keyboard_GetLastCommand `(uc  1 e 1 0 ]

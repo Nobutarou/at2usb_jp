@@ -142,8 +142,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 64 `i `uc
 ..
 ]
-"143
-[; ;ps2usb.c: 143: static const uint8_t ps2ExtUsbMap[] = {
+"145
+[; ;ps2usb.c: 145: static const uint8_t ps2ExtUsbMap[] = {
 [v _ps2ExtUsbMap `Cuc ~T0 @X0 -> 255 `i s ]
 [i _ps2ExtUsbMap
 :U ..
@@ -165,7 +165,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 230 `i `uc
--> -> 70 `i `uc
+-> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 228 `i `uc
 -> -> 0 `i `uc
@@ -404,36 +404,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"402
-[; ;ps2usb.c: 402: uint8_t PS2USB_ScanCodeToUSBHID(const PS2ScanCode *scanCode) {
+"404
+[; ;ps2usb.c: 404: uint8_t PS2USB_ScanCodeToUSBHID(const PS2ScanCode *scanCode) {
 [v _PS2USB_ScanCodeToUSBHID `(uc ~T0 @X0 1 ef1`*CS1 ]
 {
 [e :U _PS2USB_ScanCodeToUSBHID ]
 [v _scanCode `*CS1 ~T0 @X0 1 r1 ]
 [f ]
-"427
-[; ;ps2usb.c: 427:     if (scanCode->isExtend) {
+"429
+[; ;ps2usb.c: 429:     if (scanCode->isExtend) {
 [e $ ! != -> . *U _scanCode 1 `i -> 0 `i 3  ]
 {
-"433
-[; ;ps2usb.c: 433:         return ps2ExtUsbMap[scanCode->value];
+"435
+[; ;ps2usb.c: 435:         return ps2ExtUsbMap[scanCode->value];
 [e ) *U + &U _ps2ExtUsbMap * -> . *U _scanCode 0 `ux -> -> # *U &U _ps2ExtUsbMap `ui `ux ]
 [e $UE 2  ]
-"434
-[; ;ps2usb.c: 434:     } else {
+"436
+[; ;ps2usb.c: 436:     } else {
 }
 [e $U 4  ]
 [e :U 3 ]
 {
-"440
-[; ;ps2usb.c: 440:         return ps2UsbMap[scanCode->value];
+"442
+[; ;ps2usb.c: 442:         return ps2UsbMap[scanCode->value];
 [e ) *U + &U _ps2UsbMap * -> . *U _scanCode 0 `ux -> -> # *U &U _ps2UsbMap `ui `ux ]
 [e $UE 2  ]
-"441
-[; ;ps2usb.c: 441:     }
+"443
+[; ;ps2usb.c: 443:     }
 }
 [e :U 4 ]
-"442
-[; ;ps2usb.c: 442: }
+"444
+[; ;ps2usb.c: 444: }
 [e :UE 2 ]
 }
