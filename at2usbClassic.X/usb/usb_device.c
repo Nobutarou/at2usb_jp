@@ -569,6 +569,10 @@ void USBDeviceTasks(void)
     //if we are in the detached state
     if(USBDeviceState == DETACHED_STATE)
     {
+        // どうも再接続できていない状況があるみたいなので、思いきって software reset して
+        // みる。
+        // → 変わらなかった。
+        // RESET();
 	    //Initialize register to known value
         U1CON = 0;
 
